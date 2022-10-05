@@ -1,0 +1,19 @@
+[
+    {
+        
+        "name": "spiazzale",
+        "Description": "sei all'ingresso dell'universita', non hai voglia di entrare ma ti ricordi che a fine mese arriva lo stipendio, valuti di entrare...",
+        "alias": "spiazzale,esterno,fuori'"
+    },
+    {
+        "name": "atrio",
+        "Description": "sei entrato nell'universita', spesso ti fermi a chiacchierare con bruno",
+        "alias": "ingresso, atrio,entrata,università,universita"
+    },
+    {
+        "name": "portineria",
+        "Description": "nella portineria vengono lasciati i pacchi amazon,ma forse c'è qualcuno..",
+        "alias": "portineria"      
+    }
+
+]
