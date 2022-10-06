@@ -1,0 +1,106 @@
+package com.example.UTILITIES;
+
+import java.io.FileReader;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.io.IOException;
+import java.io.InputStream;
+
+import com.example.GENERIC.direction;
+import com.example.GENERIC.gameStatus;
+import com.example.GENERIC.room;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONArray;
+
+import org.apache.commons.io.IOUtils;
+
+
+
+public class jsonReader {
+    private static String roomPath="src/main/java/com/example/RESOURCES/rooms.json";
+    private static String directionPath="src/main/java/com/example/RESOURCES/direction.json";
+    private static String npcPath="src/main/java/com/example/RESOURCES/npcs.json";
+    private static String itemPath="src/main/java/com/example/RESOURCES/items.json";
+
+
+
+    
+            
+            
+
+     public static void roomsInit() throws JSONException, IOException{
+        JSONArray rooms = readFile(roomPath);
+        Map<Integer, List<Integer>> roomsDirections = new HashMap<Integer, List<Integer>>();
+        Set<room> roomsSet = new java.util.HashSet<room>();
+        for (int i = 0; i < rooms.length(); i++) {
+            JSONObject room = rooms.getJSONObject(i);
+            int id = room.getInt("id");
+            String name = room.getString("name");
+            String description = room.getString("description");
+            boolean isLocked = room.getBoolean("isLocked");
+            String aliases = room.getString("aliases");
+
+            int north = room.getInt("north");
+            int south = room.getInt("south");
+            int east = room.getInt("east");
+            int west = room.getInt("west");
+
+            List<Integer> directions = IntStream.of(north, south, east, west).boxed().collect(Collectors.toList());
+            roomsDirections.put(id,directions);
+
+            String[] aliasesArray = aliases.split(",");
+            List<String> aliasesList;
+            aliasesList=IntStream.range(0, aliasesArray.length).mapToObj(j -> aliasesArray[j]).collect(Collectors.toList());
+            room roomObj = new room(id,name, description, isLocked,aliasesList);
+            roomsSet.add(roomObj);
+        }
+        gameStatus.loadRooms(roomsSet);
+        gameStatus.loadRoomsDirections(roomsDirections);
+    }
+    public static void directionInit() throws JSONException, IOException
+    {
+        JSONArray directions = readFile(directionPath);
+        Set<direction> directionsSet = new java.util.HashSet<direction>();
+        for (int i = 0; i < directions.length(); i++) {
+            JSONObject direction = directions.getJSONObject(i);
+            int id = direction.getInt("id");
+            String name = direction.getString("name");
+            String alias = direction.getString("alias");
+            String[] aliasesArray = alias.split(",");
+            List<String> aliasesList;
+            aliasesList=IntStream.range(0, aliasesArray.length).mapToObj(j -> aliasesArray[j]).collect(Collectors.toList());
+            direction directionObj = new direction(id,name, aliasesList);
+            directionsSet.add(directionObj);
+            
+        }
+        gameStatus.loadDirections(directionsSet);
+    }
+
+
+           
+
+public static  JSONArray readFile(String path) throws JSONException, IOException {
+    File f = new File(path);
+    JSONArray jsonArray = null;
+    if (f.exists()) {
+        InputStream is = new FileInputStream(f);
+        String jsonTxt = IOUtils.toString(is, "UTF-8");
+      
+        jsonArray=new JSONArray(jsonTxt);
+   
+    }
+    return(jsonArray);
+}
+   
+   
+}

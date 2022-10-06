@@ -1,19 +1,35 @@
 [
-    {
-        
+    {   "id": 1,
         "name": "spiazzale",
-        "Description": "sei all'ingresso dell'universita', non hai voglia di entrare ma ti ricordi che a fine mese arriva lo stipendio, valuti di entrare...",
-        "alias": "spiazzale,esterno,fuori'"
+        "description": "sei all'ingresso dell'universita', non hai voglia di entrare ma ti ricordi che a fine mese arriva lo stipendio, valuti di entrare...",
+        "aliases": "spiazzale,esterno,fuori'",
+        "isLocked": false,
+        "north": 2,
+        "south": 0,
+        "east": 0,
+        "west": 0
     },
     {
+        "id": 2,
         "name": "atrio",
-        "Description": "sei entrato nell'universita', spesso ti fermi a chiacchierare con bruno",
-        "alias": "ingresso, atrio,entrata,università,universita"
+        "description": "sei entrato nell'universita', spesso ti fermi a chiacchierare con bruno",
+        "aliases": "ingresso, atrio,entrata,università,universita",
+        "isLocked": false,
+        "north": 3,
+        "south": 1,
+        "east": 0,
+        "west": 0
     },
     {
+        "id": 3,
         "name": "portineria",
-        "Description": "nella portineria vengono lasciati i pacchi amazon,ma forse c'è qualcuno..",
-        "alias": "portineria"      
+        "description": "nella portineria vengono lasciati i pacchi amazon,ma forse c'è qualcuno..",
+        "aliases": "portineria",
+        "isLocked": false,
+        "north": 0,
+        "south": 2,
+        "east": 0,
+        "west": 0
     }
 
 ]

@@ -1,23 +1,115 @@
 package com.example.GENERIC;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import com.example.FRONTEND.*;;
 
-
-public class room {
+//is a noun
+public class room extends noun {
+    
     
     boolean isLocked;
     room north;
     room south;
     room east;
     room west;
+    
+    
     String Description;
+  
+
+    public room(int id,String name, String Description, boolean isLocked,List<String> inputAliases) {
+        this.name = name;
+        this.Description = Description;
+        this.isLocked = isLocked;
+        Set<String> aliases=new HashSet<String>(inputAliases);
+        this.aliases=Collections.unmodifiableSet(aliases);
+
+        this.id=id;
+    }
+    
+    
+
+    public Set<String> getAliases() {
+        return aliases;
+    }
+    public String getName() {
+        return name;
+    }
+    public String getDescription() {
+        return Description;
+    }
+    public boolean isLocked() {
+        return isLocked;
+    }
+    public int getId() {
+        return id;
+    }
+
+
+
+
+    public void setDirection(int north, int south, int east, int west) {
+        this.north = gameStatus.getRoom(north);
+        this.south = gameStatus.getRoom(south);
+        this.east = gameStatus.getRoom(east);
+        this.west = gameStatus.getRoom(west);
+    }
+
+
+
+
+
+
+
+
 
     public  void execute  (String verb) {
       if (verb == "vai") {
+        if(!isLocked && gameStatus.getCurrentRoom().isNear(this)) {
+     
       gameStatus.currentRoom = this;
       frontEnd.Description(this.Description);
+        }
+
+        else {
+          if(isLocked == true && gameStatus.getCurrentRoom().isNear(this)) {
+            frontEnd.Description("la stanza è chiusa");
+          }
+            else{
+              frontEnd.Description("la stanza non è vicina");
+            }
+        }
       
+        
       }
+
+      
+      else {
+          frontEnd.Description("Non puoi fare questo");
+      }
+
     }
+
+
+
+
+
+
+
+   public boolean isNear(room room) {
+       if (this.north == room || this.south == room || this.east == room || this.west == room) {
+           return true;
+       }
+       else {
+           return false;
+       }
+      }
+
+
 
     
     public room getRoom(direction whereDirection)

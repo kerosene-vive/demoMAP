@@ -23,6 +23,9 @@ public class Parser {
               }
         }
     }
+
+
+    
     public static void parserGame() {
        Scanner sc = new Scanner(System.in);
          while (true) {
@@ -42,7 +45,7 @@ public class Parser {
 
     public static void EventAriser(String input) {
         String verb;
-        String noun;//for room ,npc,items,and directions
+        String name;//for room ,npc,items,and directions
         if (verbs.getVerb(input).equals("vai")) {
             
             verb="vai";
@@ -66,6 +69,17 @@ public class Parser {
         else {
             frontEnd.error();
             verb="error";
+        }
+
+        noun myNoun=noun.getNoun(input);
+
+        if(myNoun!=null)
+        {
+            myNoun.execute(verb);
+        }
+        else
+        {
+            frontEnd.error();
         }
        
       
