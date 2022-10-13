@@ -1,0 +1,13 @@
+[
+    {   "id": 1,
+        "name": "chiave",
+        "aliases": "chiave, chiavi",
+        "frasePrendi": "questa sembra proprio la chiave del tuo ufficio...",
+        "fraseUsa": "adesso puoi entrare finalmente nel tuo ufficio",
+        "room": 12,
+        "isUsable": false
+}
+    
+
+
+]

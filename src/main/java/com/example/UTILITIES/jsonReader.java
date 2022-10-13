@@ -17,6 +17,8 @@ import java.io.InputStream;
 
 import com.example.GENERIC.direction;
 import com.example.GENERIC.gameStatus;
+import com.example.GENERIC.item;
+import com.example.GENERIC.npc;
 import com.example.GENERIC.room;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -86,6 +88,68 @@ public class jsonReader {
         gameStatus.loadDirections(directionsSet);
     }
 
+
+
+    public static void npcInit() throws JSONException, IOException
+    {
+        JSONArray npcs = readFile(npcPath);
+        Set<npc> npcsSet = new java.util.HashSet<npc>();
+        for (int i = 0; i < npcs.length(); i++) {
+            JSONObject npc = npcs.getJSONObject(i);
+            int id = npc.getInt("id");
+            String name = npc.getString("name");
+            String aliases = npc.getString("aliases");
+            String description=npc.getString("fraseParla");
+            room npcRoom =gameStatus.getRoom(npc.getInt("room"));
+            
+            String[] aliasesArray = aliases.split(",");
+            List<String> aliasesList;
+            aliasesList=IntStream.range(0, aliasesArray.length).mapToObj(j -> aliasesArray[j]).collect(Collectors.toList());
+            Map <List<String>,String> executeInputOutput=new HashMap<List<String>,String>();
+            JSONArray execute=npc.getJSONArray("execute");
+            for(int j=0;j<execute.length();j++)
+            {
+                JSONObject executeObj=execute.getJSONObject(j);
+                String input=executeObj.getString("input");
+                String output=executeObj.getString("output");
+                String[] inputArray = input.split(",");
+                List<String> inputList;
+                inputList=IntStream.range(0, inputArray.length).mapToObj(k -> inputArray[k]).collect(Collectors.toList());
+                executeInputOutput.put(inputList, output);
+            }
+            npc npcObj = new npc(id,name,description,aliasesList,executeInputOutput,npcRoom);
+            npcsSet.add(npcObj);
+            
+        }
+        gameStatus.loadNpcs(npcsSet);
+    }
+
+//item  init
+    public static void itemInit() throws JSONException, IOException
+    {
+        JSONArray items = readFile(itemPath);
+        Set<item> itemsSet = new java.util.HashSet<item>();
+        for (int i = 0; i < items.length(); i++) {
+            JSONObject item = items.getJSONObject(i);
+            int id = item.getInt("id");
+            String name = item.getString("name");
+            String aliases = item.getString("aliases");
+            room itemRoom =gameStatus.getRoom(item.getInt("room"));
+            Boolean isUsable=item.getBoolean("isUsable");
+            String frasePrendi=item.getString("frasePrendi");
+            String fraseUsa=item.getString("fraseUsa");
+            String[] aliasesArray = aliases.split(",");
+            List<String> aliasesList;
+            aliasesList=IntStream.range(0, aliasesArray.length).mapToObj(j -> aliasesArray[j]).collect(Collectors.toList());
+            item itemObj = new item(id,name,aliasesList,frasePrendi,fraseUsa,isUsable,itemRoom);
+            itemsSet.add(itemObj);
+            
+        }
+        gameStatus.loadItems(itemsSet);
+    }
+
+ 
+ 
 
            
 

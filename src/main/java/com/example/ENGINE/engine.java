@@ -21,6 +21,8 @@ public class engine {
     try {
         jsonReader.roomsInit();
         jsonReader.directionInit();
+        jsonReader.npcInit();
+        jsonReader.itemInit();
 
     } catch (JSONException | IOException e) {
         // TODO Auto-generated catch block

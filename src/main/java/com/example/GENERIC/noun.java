@@ -24,7 +24,7 @@ public abstract class noun {
     
    
 
-    abstract public void execute(String verb);
+    abstract public boolean execute(String verb);
     
     static public noun getNoun(String input) {
         String[] words = input.split(" ");
