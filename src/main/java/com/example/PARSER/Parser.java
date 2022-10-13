@@ -47,7 +47,7 @@ public class Parser {
 
     public static void EventAriser(String input) {
         input = input.toLowerCase();
-
+       System.out.println(input);
         String verb;
         String name;//for room ,npc,items,and directions
         if (verbs.getVerb(input).equals("vai")) {
