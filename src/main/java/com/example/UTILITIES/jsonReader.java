@@ -29,10 +29,10 @@ import org.apache.commons.io.IOUtils;
 
 
 public class jsonReader {
-    private static String roomPath="src/main/java/com/example/RESOURCES/rooms.json";
-    private static String directionPath="src/main/java/com/example/RESOURCES/direction.json";
-    private static String npcPath="src/main/java/com/example/RESOURCES/npcs.json";
-    private static String itemPath="src/main/java/com/example/RESOURCES/items.json";
+    private static String roomPath="demoMAP/src/main/java/com/example/RESOURCES/rooms.json";
+    private static String directionPath="demoMAP/src/main/java/com/example/RESOURCES/direction.json";
+    private static String npcPath="demoMAP/src/main/java/com/example/RESOURCES/npcs.json";
+    private static String itemPath="demoMAP/src/main/java/com/example/RESOURCES/items.json";
 
 
 

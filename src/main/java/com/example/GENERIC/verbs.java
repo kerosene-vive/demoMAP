@@ -17,13 +17,13 @@ public class verbs {
         // of verbs
         // TODO
         
-        String vaiRelativePath = "src/main/java/com/example/RESOURCES/verbsAlias/vai.txt";
-        String parlaRelativePath = "src/main/java/com/example/RESOURCES/verbsAlias/parla.txt";
-        String osservaRelativePath = "src/main/java/com/example/RESOURCES/verbsAlias/osserva.txt";
-        String prendiRelativePath = "src/main/java/com/example/RESOURCES/verbsAlias/prendi.txt";
-        String usaRelativePath = "src/main/java/com/example/RESOURCES/verbsAlias/usa.txt";
+        String vaiRelativePath = "demoMAP/src/main/java/com/example/RESOURCES/verbsAlias/vai.txt";
+        String parlaRelativePath = "demoMAP/src/main/java/com/example/RESOURCES/verbsAlias/parla.txt";
+        String osservaRelativePath = "demoMAP/src/main/java/com/example/RESOURCES/verbsAlias/osserva.txt";
+        String prendiRelativePath = "demoMAP/src/main/java/com/example/RESOURCES/verbsAlias/prendi.txt";
+        String usaRelativePath = "demoMAP/src/main/java/com/example/RESOURCES/verbsAlias/usa.txt";
         
-        
+       
         vai = new HashSet<String>(addFileintoList(vaiRelativePath));
         parla = new HashSet<String>(addFileintoList(parlaRelativePath));
         osserva = new HashSet<String>(addFileintoList(osservaRelativePath));
