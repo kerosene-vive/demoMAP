@@ -8,9 +8,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class FileManager {
 
@@ -39,10 +37,78 @@ public class FileManager {
             bw.write(aliasOsserva);
             bw.flush();
             bw.close();
+            fw.close();
         } catch (IOException ex) {
-            Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
+    }
 
+    private static void setParla(File parla) {
+
+        String aliasParla = "parla chiedi discuti";
+
+        try {
+            parla.createNewFile();
+            FileWriter fw = new FileWriter(parla);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(aliasParla);
+            bw.flush();
+            bw.close();
+            fw.close();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    private static void setPrendi(File prendi) {
+
+        String aliasPrendi = "prendi raccogli";
+
+        try {
+            prendi.createNewFile();
+            FileWriter fw = new FileWriter(prendi);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(aliasPrendi);
+            bw.flush();
+            bw.close();
+            fw.close();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    private static void setUsa(File usa) {
+
+        String aliasUsa = "usa utilizza metti apri fai spingi";
+
+        try {
+            usa.createNewFile();
+            FileWriter fw = new FileWriter(usa);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(aliasUsa);
+            bw.flush();
+            bw.close();
+            fw.close();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    private static void setVai(File vai) {
+
+        String aliasVai = "vai dirigiti muoviti entra sali";
+
+        try {
+            vai.createNewFile();
+            FileWriter fw = new FileWriter(vai);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(aliasVai);
+            bw.flush();
+            bw.close();
+            fw.close();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     public static void fileCreator() {
@@ -55,27 +121,22 @@ public class FileManager {
         File usa = new File(USA_PATH);
         File vai = new File(VAI_PATH);
 
-        try {
-            if (!osserva.exists()) {
-                setOsserva(osserva);
-            }
-            if (!parla.exists()) {
-                parla.createNewFile();
-            }
-            if (!prendi.exists()) {
-                prendi.createNewFile();
-            }
-            if (!usa.exists()) {
-                usa.createNewFile();
-            }
-            if (!vai.exists()) {
-                vai.createNewFile();
-            }
-
-        } catch (IOException ex) {
-            Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
+        if (!osserva.exists()) {
+            setOsserva(osserva);
+            //inserire get path e capire il ritorno se hash map o array list
+        }
+        if (!parla.exists()) {
+            setParla(parla);
+        }
+        if (!prendi.exists()) {
+            setPrendi(prendi);
+        }
+        if (!usa.exists()) {
+            setUsa(usa);
+        }
+        if (!vai.exists()) {
+            setVai(vai);
         }
 
     }
-
 }
