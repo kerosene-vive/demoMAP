@@ -8,6 +8,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class FileManager {
@@ -111,7 +113,7 @@ public class FileManager {
         }
     }
 
-    public static void fileCreator() {
+    public static Map fileCreator() {
 
         directoryCreator();
 
@@ -138,5 +140,14 @@ public class FileManager {
             setVai(vai);
         }
 
+        //creation Map <nameFile, path>
+        Map filePahts = new HashMap();
+        filePahts.put(osserva.getName(), osserva.getPath());
+        filePahts.put(parla.getName(), parla.getPath());
+        filePahts.put(prendi.getName(), prendi.getPath());
+        filePahts.put(usa.getName(), usa.getPath());
+        filePahts.put(vai.getName(), vai.getPath());
+        
+        return filePahts;
     }
 }
