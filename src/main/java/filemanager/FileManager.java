@@ -30,7 +30,7 @@ public class FileManager {
 
     private static void setOsserva(File osserva) {
 
-        String aliasOsserva = "osserva guarda orriglia spia";
+        String aliasOsserva = "osserva\nguarda\norriglia\nspia";
 
         try {
             osserva.createNewFile();
@@ -47,7 +47,7 @@ public class FileManager {
 
     private static void setParla(File parla) {
 
-        String aliasParla = "parla chiedi discuti";
+        String aliasParla = "parla\nchiedi\ndiscuti";
 
         try {
             parla.createNewFile();
@@ -64,7 +64,7 @@ public class FileManager {
 
     private static void setPrendi(File prendi) {
 
-        String aliasPrendi = "prendi raccogli";
+        String aliasPrendi = "prendi\nraccogli";
 
         try {
             prendi.createNewFile();
@@ -81,7 +81,7 @@ public class FileManager {
 
     private static void setUsa(File usa) {
 
-        String aliasUsa = "usa utilizza metti apri fai spingi";
+        String aliasUsa = "usa\nutilizza\nmetti\napri\nfai\nspingi";
 
         try {
             usa.createNewFile();
@@ -98,7 +98,7 @@ public class FileManager {
 
     private static void setVai(File vai) {
 
-        String aliasVai = "vai dirigiti muoviti entra sali";
+        String aliasVai = "vai\ndirigiti\nmuoviti\nentra\nsali";
 
         try {
             vai.createNewFile();
