@@ -9,7 +9,7 @@ import java.util.Set;
 import com.example.FRONTEND.frontEnd;
 import com.example.PARSER.Parser;
 
-public class npc extends  noun {
+public class npc extends  noun  implements java.io.Serializable {
     room currentRoom;
     private Map<List<String>, String> executeInputOutput;
     

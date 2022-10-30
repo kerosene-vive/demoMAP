@@ -2,9 +2,8 @@ package com.example.GENERIC;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.io.FileWriter;
-import java.io.IOException;
 
+import dbmanager.*;
  
 
 
@@ -14,7 +13,7 @@ public class gameStatus {
     static Set<direction> directions;
     static Set<npc> npcs;
     static Set<item> items;
-
+    static boolean isGameRunning;
 
 
 public static room getCurrentRoom() {
@@ -22,6 +21,12 @@ public static room getCurrentRoom() {
 }
 public static void setCurrentRoom(room currentRoom) {
     gameStatus.currentRoom = currentRoom;
+}
+public static Set<npc> getNpcs() {
+    return npcs;
+}
+public static Set<item> getItems() {
+    return items;
 }
 
     public static Set<direction> getDirection() {
@@ -89,7 +94,9 @@ public static noun[] getNouns() {
 }
 public static void init() {
     setCurrentRoom(getRoom(1));
+    isGameRunning=true;
 }
+
 public static void loadNpcs(Set<npc> npcsSet) {
     //read from a json file npcs and put them in the set
     gameStatus.npcs=npcsSet;
@@ -97,6 +104,9 @@ public static void loadNpcs(Set<npc> npcsSet) {
 public static void loadItems(Set<item> itemsSet) {
     //read from a json file items and put them in the set
     gameStatus.items=itemsSet;
+}
+public static void save() {
+ DBTest.save(currentRoom, rooms, npcs, items);
 }
 
 }
