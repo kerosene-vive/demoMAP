@@ -2,9 +2,8 @@ package com.example.GENERIC;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.io.FileWriter;
-import java.io.IOException;
 
+import dbmanager.*;
  
 
 
@@ -14,28 +13,45 @@ public class gameStatus {
     static Set<direction> directions;
     static Set<npc> npcs;
     static Set<item> items;
-
+    static boolean isGameRunning=false;
 
 
 public static room getCurrentRoom() {
     return currentRoom;
 }
+public static Set<npc> getNpcs() {
+    return npcs;
+}
+public static Set<item> getItems() {
+    return items;
+}
+public static Set<room> getRooms() {
+    return rooms;
+}
+public static Set<direction> getDirection() {
+        return directions;
+}
+
 public static void setCurrentRoom(room currentRoom) {
     gameStatus.currentRoom = currentRoom;
 }
-
-    public static Set<direction> getDirection() {
-        return directions;
-    }
-
-
  public static void loadRooms(Set<room> rooms) {
     //read from a json file rooms and put them in the set
    gameStatus.rooms=rooms;
  }
-   public static Set<room> getRooms() {
-    return rooms;
-  }
+ public static void loadNpcs(Set<npc> npcsSet) {
+    //read from a json file npcs and put them in the set
+    gameStatus.npcs=npcsSet;
+}
+public static void loadItems(Set<item> itemsSet) {
+    //read from a json file items and put them in the set
+    gameStatus.items=itemsSet;
+}
+public static boolean isGameRunning() {
+    return isGameRunning;
+}
+
+
 public static room getRoom(int id) {
     for(room room:rooms)
     {
@@ -89,14 +105,16 @@ public static noun[] getNouns() {
 }
 public static void init() {
     setCurrentRoom(getRoom(1));
+    isGameRunning=true;
 }
-public static void loadNpcs(Set<npc> npcsSet) {
-    //read from a json file npcs and put them in the set
-    gameStatus.npcs=npcsSet;
+
+
+public static void save() {
+ DBTest.save(currentRoom, rooms, npcs, items);
 }
-public static void loadItems(Set<item> itemsSet) {
-    //read from a json file items and put them in the set
-    gameStatus.items=itemsSet;
+public static void load() {
+    DBTest.load();
+    isGameRunning=true;
 }
 
 }

@@ -143,7 +143,7 @@ public class jsonReader {
             aliasesList=IntStream.range(0, aliasesArray.length).mapToObj(j -> aliasesArray[j]).collect(Collectors.toList());
             item itemObj = new item(id,name,aliasesList,frasePrendi,fraseUsa,isUsable,itemRoom);
             itemsSet.add(itemObj);
-            
+         
         }
         gameStatus.loadItems(itemsSet);
     }

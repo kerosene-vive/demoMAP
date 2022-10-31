@@ -2,7 +2,7 @@ package com.example.GENERIC;
 
 import java.util.Set;
 
-public abstract class noun {
+public abstract class noun   {
     protected String name;
     protected Set<String> aliases;
     protected int id;

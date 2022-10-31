@@ -8,7 +8,7 @@ import java.util.Set;
 
 import com.example.FRONTEND.frontEnd;
 
-public class item extends noun {
+public class item extends noun implements java.io.Serializable {
     
     room currentRoom;
     String frasePrendi;
@@ -24,8 +24,21 @@ public item(int id,String name, List<String> inputAliases,String frasePrendi,Str
     this.frasePrendi=frasePrendi;
     this.fraseUsa=fraseUsa;
     this.Description="";
+    this.currentRoom=currentRoom;
 }
-
+//get isUsable and currentRoom
+public boolean isUsable() {
+    return isUsable;
+}
+public room getCurrentRoom() {
+    return currentRoom;
+}
+public void setCurrentRoom(room currentRoom) {
+    this.currentRoom = currentRoom;
+}
+public void setUsable(boolean isUsable) {
+    this.isUsable = isUsable;
+}
     public boolean execute(String verb) {
 
         if(verb.equals("prendi") && this.currentRoom==gameStatus.currentRoom)

@@ -20,6 +20,12 @@ public class Parser {
               else if (input.equals("$")) {
                 System.exit(0);
               }
+              else if(input.equals("H")) {
+                  frontEnd.help();
+              }
+              else  if(input.equals("C")) {
+                  gameStatus.load();
+              }
               else {
                 frontEnd.error();
               }
@@ -36,7 +42,7 @@ public class Parser {
                 EventAriser(input);
 
               if (input.equals("$")) {
-                
+                frontEnd.exit();
                 break;
               }
           }
@@ -47,6 +53,11 @@ public class Parser {
 
     public static void EventAriser(String input) {
         input = input.toLowerCase();
+        if(input.equals("salva"))
+        {
+            gameStatus.save();
+            return;
+        }
        System.out.println(input);
         String verb;
         String name;//for room ,npc,items,and directions

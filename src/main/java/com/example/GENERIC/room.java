@@ -1,13 +1,15 @@
 package com.example.GENERIC;
 
 import com.example.FRONTEND.*;
+
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 //is a noun
-public class room extends noun {
+public class room extends noun implements java.io.Serializable {
 
   boolean isLocked;
   room north;
@@ -33,25 +35,12 @@ public class room extends noun {
     this.id = id;
   }
 
-  public Set<String> getAliases() {
-    return aliases;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public String getDescription() {
-    return Description;
-  }
+ 
 
   public boolean isLocked() {
     return isLocked;
   }
 
-  public int getId() {
-    return id;
-  }
   public void setIsLocked(boolean isLocked) {
     this.isLocked = isLocked;
   }
