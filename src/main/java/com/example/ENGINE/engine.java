@@ -12,22 +12,27 @@ import org.json.JSONException;
 //Gioco
 public class engine {
     public static void main(String[] args) {
+        verbs.init();
+
+        try {
+            jsonReader.roomsInit();
+            jsonReader.directionInit();
+            jsonReader.npcInit();
+            jsonReader.itemInit();
+    
+        } catch (JSONException | IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    
     frontEnd.lobby();
     Parser.lobby();
     frontEnd.gameStart();
-    verbs.init();
-
-    try {
-        jsonReader.roomsInit();
-        jsonReader.directionInit();
-        jsonReader.npcInit();
-        jsonReader.itemInit();
-
-    } catch (JSONException | IOException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
+    if(!gameStatus.isGameRunning()) {
+        gameStatus.init();
     }
-    gameStatus.init();
+    
+    
     Parser.parserGame();
     
 

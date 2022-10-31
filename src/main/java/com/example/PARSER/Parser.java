@@ -20,6 +20,12 @@ public class Parser {
               else if (input.equals("$")) {
                 System.exit(0);
               }
+              else if(input.equals("H")) {
+                  frontEnd.help();
+              }
+              else  if(input.equals("C")) {
+                  gameStatus.load();
+              }
               else {
                 frontEnd.error();
               }
@@ -36,7 +42,7 @@ public class Parser {
                 EventAriser(input);
 
               if (input.equals("$")) {
-                
+                frontEnd.exit();
                 break;
               }
           }

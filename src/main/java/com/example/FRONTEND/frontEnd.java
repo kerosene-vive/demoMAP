@@ -13,7 +13,8 @@ public class frontEnd {
         System.out.println("================================");
         System.out.println("===PREMI====G====PER===GIOCARE");
         System.out.println("===PREMI====$====PER===USCIRE");
-        System.out.println("====IL======GIOCO====SALVA==AUTOMATICAMENTE");
+        System.out.println("===PREMI====C====PER===CARICARE==UNA==PARTITA");
+        System.out.println("===PREMI====H====PER===HELP");
     }
     public static void gameStart() {
         System.out.println("================================");
@@ -30,6 +31,16 @@ public class frontEnd {
     {
         System.out.println("================================");
         System.out.println("*   "+string+"  *");
+        System.out.println("================================");
+    }
+    public static void help() {
+        System.out.println("================================");
+        System.out.println("*   QUA' METTEREMO UNA MINI GUIDA AL GIOCO..  *");
+        System.out.println("================================");
+    }
+    public static void exit() {
+        System.out.println("================================");
+        System.out.println("*   GRAZIE PER AVER GIOCATO  *");
         System.out.println("================================");
     }
 }

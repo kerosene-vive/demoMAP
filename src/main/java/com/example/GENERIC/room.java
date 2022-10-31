@@ -35,25 +35,12 @@ public class room extends noun implements java.io.Serializable {
     this.id = id;
   }
 
-  public Set<String> getAliases() {
-    return aliases;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public String getDescription() {
-    return Description;
-  }
+ 
 
   public boolean isLocked() {
     return isLocked;
   }
 
-  public int getId() {
-    return id;
-  }
   public void setIsLocked(boolean isLocked) {
     this.isLocked = isLocked;
   }

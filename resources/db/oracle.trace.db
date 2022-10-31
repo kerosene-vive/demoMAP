@@ -1,0 +1,6 @@
+2022-10-31 11:32:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROOMS" not found; SQL statement:
+SELECT * FROM rooms [42102-214]
+2022-10-31 11:36:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ROOMS" not found; SQL statement:
+SELECT * FROM rooms [42102-214]

@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
 
@@ -46,7 +48,52 @@ public class DBTest {
     }
 
 
+    public static void load() {
+        Connection conn =DBTest.connectToDB();
+        if (conn != null) {
+            if(checkIfDatabaseEmpty(conn)) {
+                loadGameStatus(conn);
+                frontEnd.Description("Caricamento completato, puoi continuare a giocare");
+            }
+            else {
+                
+                frontEnd.Description("Non hai salvato nessuna partita, non posso caricare");
+            }
+            
+            
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+     
+        } else {
+            System.out.println("Failed to make connection!");
+        }
+    }
 
+
+   private static boolean checkIfDatabaseEmpty(Connection conn)
+   {
+        
+         try {
+              Statement stmt = conn.createStatement();
+              ResultSet rs = stmt.executeQuery("SELECT * FROM room");
+              if (!rs.next() ) {
+                
+                
+                return false;
+              } else {
+                
+                return true;
+              }
+           
+         } catch (Exception e) {
+              // TODO Auto-generated catch block
+              return false;
+         }
+   }
 
 
 
@@ -202,52 +249,100 @@ public class DBTest {
         //save the game status to the DB
     public static void loadGameStatus(Connection conn) {
         //load current room
+       
         try{
             Statement stm = conn.createStatement();
-            stm.executeQuery("SELECT room FROM save");
-            System.out.println("the current room is "+stm.toString());
+            ResultSet rs=stm.executeQuery("SELECT room FROM save");
+            while(rs.next()){
+               gameStatus.setCurrentRoom(gameStatus.getRoom(rs.getInt("room")));
+            }
+            
             stm.close();
         }
         catch (SQLException e) {
             e.printStackTrace();
         }
         //load rooms
+
+
+        Set<room> rooms=new HashSet<room>();
         for(room roomItem : gameStatus.getRooms()){
             int roomId=roomItem.getId();
             try{
                 Statement stm = conn.createStatement();
-                stm.executeQuery("SELECT locked FROM room WHERE id='"+roomId+"'");
-                System.out.println("the room "+roomId+" is locked? "+stm.toString());
+                ResultSet rs=stm.executeQuery("SELECT locked FROM room WHERE id='"+roomId+"'");
+                while(rs.next()){
+                    roomItem.setIsLocked(rs.getBoolean("locked"));
+                }
+                
                 stm.close();
             }
             catch (SQLException e) { 
                 e.printStackTrace();
             }
+            rooms.add(roomItem);
         }
+
+
+
+        Set<npc> npcsToLoad=new HashSet<npc>();
         for(npc npcItem : gameStatus.getNpcs()){
             int npcId=npcItem.getId();
             try{
                 Statement stm = conn.createStatement();
-                stm.executeQuery("SELECT npcCurrentRoom FROM npc WHERE id='"+npcId+"'");
-                System.out.println("the npc "+npcId+" is in room "+stm.toString());
+                ResultSet rs=stm.executeQuery("SELECT npcCurrentRoom FROM npc WHERE id='"+npcId+"'");
+                while(rs.next()){
+                   npcItem.setCurrentRoom(gameStatus.getRoom(rs.getInt("npcCurrentRoom")));
+                   
+                }
+              
                 stm.close();
             }
             catch (SQLException e) { 
                 e.printStackTrace();
             }
+            npcsToLoad.add(npcItem);
         }
+
+
+        Set<item> itemstoLoad=new HashSet<item>();
         for(item itemItem : gameStatus.getItems()){
             int itemId=itemItem.getId();
             try{
                 Statement stm = conn.createStatement();
-                stm.executeQuery("SELECT itemCurrentRoom,isItemUsable FROM item WHERE id='"+itemId+"'");
-                System.out.println("the item "+itemId+" is in room "+stm.toString());
+                ResultSet rs=stm.executeQuery("SELECT itemCurrentRoom,isItemUsable FROM item WHERE id='"+itemId+"'");
+                while(rs.next()){
+                    itemItem.setCurrentRoom(gameStatus.getRoom(rs.getInt("itemCurrentRoom")));
+                    itemItem.setUsable(rs.getBoolean("isItemUsable"));
+                    
+                }
                 stm.close();
             }
             catch (SQLException e) { 
                 e.printStackTrace();
             }
+            itemstoLoad.add(itemItem);
+          
         }
+        
+        for(item itemItem2 : itemstoLoad){
+            System.out.println(itemItem2.getName() + " " + itemItem2.isUsable()+ " " + itemItem2.getCurrentRoom().getName());
+        }
+        for(npc npcItem2 : npcsToLoad){
+            System.out.println(npcItem2.getName() + " " + npcItem2.getCurrentRoom().getName());
+        }
+        for(room roomItem2 : rooms){
+            System.out.println(roomItem2.getName() + " " + roomItem2.isLocked());
+        }
+     
+        gameStatus.loadRooms(rooms);
+        gameStatus.loadNpcs(npcsToLoad);
+        gameStatus.loadItems(itemstoLoad);
+      
+
+
+
+
     }
 
 

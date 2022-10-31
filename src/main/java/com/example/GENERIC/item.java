@@ -33,6 +33,12 @@ public boolean isUsable() {
 public room getCurrentRoom() {
     return currentRoom;
 }
+public void setCurrentRoom(room currentRoom) {
+    this.currentRoom = currentRoom;
+}
+public void setUsable(boolean isUsable) {
+    this.isUsable = isUsable;
+}
     public boolean execute(String verb) {
 
         if(verb.equals("prendi") && this.currentRoom==gameStatus.currentRoom)
