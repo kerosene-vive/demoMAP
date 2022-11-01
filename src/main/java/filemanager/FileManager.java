@@ -8,9 +8,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 
 public class FileManager {
 
@@ -20,6 +20,8 @@ public class FileManager {
     private static final String PRENDI_PATH = "./src/resourceFiles/prendi.txt";
     private static final String USA_PATH = "./src/resourceFiles/usa.txt";
     private static final String VAI_PATH = "./src/resourceFiles/vai.txt";
+    private static ArrayList<String> toDownload = null;
+    private static ArrayList<String> toCheck = null;
 
     private static void directoryCreator() {
         File directory = new File(RISORSE_FILE);
@@ -28,92 +30,7 @@ public class FileManager {
         }
     }
 
-    private static void setOsserva(File osserva) {
-
-        String aliasOsserva = "osserva\nguarda\norriglia\nspia";
-
-        try {
-            osserva.createNewFile();
-            FileWriter fw = new FileWriter(osserva);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(aliasOsserva);
-            bw.flush();
-            bw.close();
-            fw.close();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
-    private static void setParla(File parla) {
-
-        String aliasParla = "parla\nchiedi\ndiscuti";
-
-        try {
-            parla.createNewFile();
-            FileWriter fw = new FileWriter(parla);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(aliasParla);
-            bw.flush();
-            bw.close();
-            fw.close();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
-    private static void setPrendi(File prendi) {
-
-        String aliasPrendi = "prendi\nraccogli";
-
-        try {
-            prendi.createNewFile();
-            FileWriter fw = new FileWriter(prendi);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(aliasPrendi);
-            bw.flush();
-            bw.close();
-            fw.close();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
-    private static void setUsa(File usa) {
-
-        String aliasUsa = "usa\nutilizza\nmetti\napri\nfai\nspingi";
-
-        try {
-            usa.createNewFile();
-            FileWriter fw = new FileWriter(usa);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(aliasUsa);
-            bw.flush();
-            bw.close();
-            fw.close();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
-    private static void setVai(File vai) {
-
-        String aliasVai = "vai\ndirigiti\nmuoviti\nentra\nsali";
-
-        try {
-            vai.createNewFile();
-            FileWriter fw = new FileWriter(vai);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(aliasVai);
-            bw.flush();
-            bw.close();
-            fw.close();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
-    public static Map fileCreator() {
+    public static Map fileCheck() {
 
         directoryCreator();
 
@@ -124,22 +41,33 @@ public class FileManager {
         File vai = new File(VAI_PATH);
 
         if (!osserva.exists()) {
-            setOsserva(osserva);
-            //inserire get path e capire il ritorno se hash map o array list
+            toDownload.add(osserva.getName());
+        } else {
+            toCheck.add(osserva.getName());
         }
         if (!parla.exists()) {
-            setParla(parla);
+            toDownload.add(parla.getName());
+        } else {
+            toCheck.add(osserva.getName());
         }
         if (!prendi.exists()) {
-            setPrendi(prendi);
+            toDownload.add(prendi.getName());
+        } else {
+            toCheck.add(osserva.getName());
         }
         if (!usa.exists()) {
-            setUsa(usa);
+            toDownload.add(usa.getName());
+        } else {
+            toCheck.add(osserva.getName());
         }
         if (!vai.exists()) {
-            setVai(vai);
+            toDownload.add(vai.getName());
+        } else {
+            toCheck.add(osserva.getName());
         }
 
+        //chiamo server x scaricare i file assenti e per gli altri controllo l'aggiornamento
+        
         //creation Map <nameFile, path>
         Map filePahts = new HashMap();
         filePahts.put(osserva.getName(), osserva.getPath());
@@ -147,8 +75,7 @@ public class FileManager {
         filePahts.put(prendi.getName(), prendi.getPath());
         filePahts.put(usa.getName(), usa.getPath());
         filePahts.put(vai.getName(), vai.getPath());
-        
-        
+
         return filePahts;
     }
 }

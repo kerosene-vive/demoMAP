@@ -27,7 +27,7 @@ public class verbs {
         // of verbs
         // TODO
         
-        Map filePaths = FileManager.fileCreator();
+        Map filePaths = FileManager.fileCheck();
         String vaiRelativePath = (String) filePaths.get(VAI_FILE);
         String parlaRelativePath = (String) filePaths.get(PARLA_FILE);
         String osservaRelativePath = (String) filePaths.get(OSSERVA_FILE);
