@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,34 +66,40 @@ public class FileManager {
         }
         if (!parla.exists()) {
             toDownload.add(parla.getName());
+            System.out.println("file > parla not found");
         } else {
             toCheck.add(PARLA_PATH);
         }
         if (!prendi.exists()) {
             toDownload.add(prendi.getName());
+            System.out.println("file > prendi not found");
         } else {
             toCheck.add(PRENDI_PATH);
         }
         if (!usa.exists()) {
             toDownload.add(usa.getName());
+            System.out.println("file > usa not found");
         } else {
             toCheck.add(USA_PATH);
         }
         if (!vai.exists()) {
             toDownload.add(vai.getName());
+            System.out.println("file > vai not found");
         } else {
             toCheck.add(VAI_PATH);
         }
 
         if (toDownload.size() > 0) {
-            System.out.println("file mancati o corrotti, rigenerazione in corso...");
+            System.out.println("rilavati file mancati, corrotti o non aggiornati, correzione in corso...");
             //connection to server
             try (Socket socket = new Socket("localhost", 5000)) {
                 dataInputStream = new DataInputStream(socket.getInputStream());
-                dataOutputStream = new DataOutputStream(socket.getOutputStream());
-
+                 PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+                 
                 for (int i = 0; i < toDownload.size(); i++) {
-                    receiveFile(toDownload.get(i));
+                    String filePath = toDownload.get(i); 
+                    out.println(filePath);
+                    receiveFile(filePath);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -125,6 +133,7 @@ public class FileManager {
     }
 
     public static ArrayList<String> getToDownlaod() {
+        System.out.println("dimensione array toDownload -->" + toDownload.size());
         return toDownload;
     }
 }

@@ -22,7 +22,7 @@ public class RequestThread extends Thread {
     private static DataInputStream dataInputStream = null;
     private static DataOutputStream dataOutputStream = null;
 
-    public RequestThread(Socket socket, String path) {
+    public RequestThread(Socket socket, String path, DataOutputStream dataOutputStream) {
         this.socket = socket;
         this.path = path;
 

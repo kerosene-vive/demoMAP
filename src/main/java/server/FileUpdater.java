@@ -5,10 +5,12 @@
 package server;
 
 import filemanager.FileManager;
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -28,39 +30,45 @@ public class FileUpdater {
     private static final String prendiPath = "./src/main/java/server/resoruces/prendi.txt";
     private static final String usaPath = "./src/main/java/server/resoruces/usa.txt";
     private static final String vaiPath = "./src/main/java/server/resoruces/vai.txt";
-    private static ArrayList<String> toDownload = new ArrayList();
 
     public static void main(String[] args) {
-        try (ServerSocket serverSocket = new ServerSocket(5000)) {
+        try ( ServerSocket serverSocket = new ServerSocket(5000)) {
             System.out.println("listening to port:5000");
             //resto in attesa di richiesta 
-            Socket clientSocket = serverSocket.accept();
-            System.out.println(clientSocket + " connected.");
-            dataInputStream = new DataInputStream(clientSocket.getInputStream());
-            dataOutputStream = new DataOutputStream(clientSocket.getOutputStream());
+            while (true) {
+                Socket clientSocket = serverSocket.accept();
+                System.out.println(clientSocket + " connected.");
+                dataInputStream = new DataInputStream(clientSocket.getInputStream());
+                dataOutputStream = new DataOutputStream(clientSocket.getOutputStream());
+                BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                //Sending all file in ToDownload
+                //toDownload = FileManager.getToDownlaod();
+                String filePath = in.readLine();
+                System.out.println("Sending file");
+                sendFile(filePath, clientSocket);
 
-            //Sending all file in ToDownload
-            toDownload = FileManager.getToDownlaod();
-            sendFile(toDownload, clientSocket);
+                dataInputStream.close();
+                dataOutputStream.close();
+                clientSocket.close();
+                System.out.println(clientSocket + " disconnected.");
+            }
 
-            dataInputStream.close();
-            dataOutputStream.close();
-            clientSocket.close();
         } catch (Exception e) {
             e.printStackTrace();
+
         }
     }
 
-    public static void sendFile(ArrayList<String> toDownlaod, Socket clientSocket) throws IOException {
+    public static void sendFile(String toDownlaod, Socket clientSocket) throws IOException {
         //metodo private che presi toDowload e toCheck, controlla le firme nei tocheck e quelli da aggiornare li inserisce nei toDownload
         //successivamente nel while vado a mandare nei thread per il download solo i toDownload
         //x PALLI parallelizzare toCheck-e-toDownload-mentre-carico-posso-controlalre-le firme e poi eventualmente aggiungerle alla coda di download
         try {
-                for (int i = 0; i < toDownlaod.size(); i++) {
-                    String serverPathFile = getServerPath(getNameFileByPath(toDownlaod.get(i)));
-                    Thread t = new RequestThread(clientSocket, serverPathFile);
-                    t.start();
-                }
+
+            String serverPathFile = getServerPath(getNameFileByPath(toDownlaod));
+            Thread t = new RequestThread(clientSocket, serverPathFile, dataOutputStream);
+            t.start();
+
         } finally {
             clientSocket.close();
         }
@@ -94,25 +102,24 @@ public class FileUpdater {
         pathList.add(prendiPath);
         pathList.add(usaPath);
         pathList.add(vaiPath);
-        
+
         return pathList;
     }
 
     /**
-     * @param fileName 
-     * search the corrispondent server path
+     * @param fileName search the corrispondent server path
      */
     private static String getServerPath(String fileName) {
-       List<String> pathList = getPathList();
-       String path;
-       for (int i = 0; i < pathList.size(); i++) {
-           
-           if(pathList.get(i).contains(fileName)) {
-               return pathList.get(i); 
-           }           
-       }
-       return "-1";
-    } 
+        List<String> pathList = getPathList();
+        String path;
+        for (int i = 0; i < pathList.size(); i++) {
+
+            if (pathList.get(i).contains(fileName)) {
+                return pathList.get(i);
+            }
+        }
+        return "-1";
+    }
     //metodo private che presi toDowload e toCheck, controlla le firme nei tocheck e quelli da aggiornare li inserisce nei toDownload
     //successivamente nel while vado a mandare nei thread per il download solo i toDownload
 }
