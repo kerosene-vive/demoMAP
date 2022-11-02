@@ -1,13 +1,13 @@
 com\example\GENERIC\item.class
 dbmanager\DBTest.class
-com\example\ENGINE\engine.class
 com\example\PARSER\Parser.class
 com\example\GENERIC\room.class
 com\example\UTILITIES\jsonReader.class
-com\example\UTILITIES\api.class
 com\example\FRONTEND\frontEnd.class
-com\example\GENERIC\npc.class
-com\example\GENERIC\noun.class
 filemanager\FileManager.class
 com\example\GENERIC\direction.class
+com\example\ENGINE\engine.class
+com\example\UTILITIES\api.class
+com\example\GENERIC\npc.class
+com\example\GENERIC\noun.class
 com\example\GENERIC\gameStatus.class

@@ -5,12 +5,18 @@
 package filemanager;
 
 import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FileManager {
 
@@ -20,8 +26,12 @@ public class FileManager {
     private static final String PRENDI_PATH = "./src/resourceFiles/prendi.txt";
     private static final String USA_PATH = "./src/resourceFiles/usa.txt";
     private static final String VAI_PATH = "./src/resourceFiles/vai.txt";
-    private static ArrayList<String> toDownload = null;
-    private static ArrayList<String> toCheck = null;
+
+    private static ArrayList<String> toDownload = new ArrayList();
+    private static ArrayList<String> toCheck = new ArrayList();
+
+    private static DataOutputStream dataOutputStream = null;
+    private static DataInputStream dataInputStream = null;
 
     private static void directoryCreator() {
         File directory = new File(RISORSE_FILE);
@@ -30,6 +40,12 @@ public class FileManager {
         }
     }
 
+    /**
+     * Checking for the presence of files in the game local repo, in case of
+     * absence they are downloaded from the server.
+     *
+     * @return map<filename, path>
+     */
     public static Map fileCheck() {
 
         directoryCreator();
@@ -42,32 +58,46 @@ public class FileManager {
 
         if (!osserva.exists()) {
             toDownload.add(osserva.getName());
+            System.out.println("file > osserva not found");
         } else {
-            toCheck.add(osserva.getName());
+            toCheck.add(OSSERVA_PATH);
         }
         if (!parla.exists()) {
             toDownload.add(parla.getName());
         } else {
-            toCheck.add(osserva.getName());
+            toCheck.add(PARLA_PATH);
         }
         if (!prendi.exists()) {
             toDownload.add(prendi.getName());
         } else {
-            toCheck.add(osserva.getName());
+            toCheck.add(PRENDI_PATH);
         }
         if (!usa.exists()) {
             toDownload.add(usa.getName());
         } else {
-            toCheck.add(osserva.getName());
+            toCheck.add(USA_PATH);
         }
         if (!vai.exists()) {
             toDownload.add(vai.getName());
         } else {
-            toCheck.add(osserva.getName());
+            toCheck.add(VAI_PATH);
         }
 
-        //chiamo server x scaricare i file assenti e per gli altri controllo l'aggiornamento
-        
+        if (toDownload.size() > 0) {
+            System.out.println("file mancati o corrotti, rigenerazione in corso...");
+            //connection to server
+            try (Socket socket = new Socket("localhost", 5000)) {
+                dataInputStream = new DataInputStream(socket.getInputStream());
+                dataOutputStream = new DataOutputStream(socket.getOutputStream());
+
+                for (int i = 0; i < toDownload.size(); i++) {
+                    receiveFile(toDownload.get(i));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
         //creation Map <nameFile, path>
         Map filePahts = new HashMap();
         filePahts.put(osserva.getName(), osserva.getPath());
@@ -77,5 +107,24 @@ public class FileManager {
         filePahts.put(vai.getName(), vai.getPath());
 
         return filePahts;
+    }
+
+    private static void receiveFile(String filePath) throws Exception {
+        int bytes = 0;
+        FileOutputStream fileOutputStream = new FileOutputStream(filePath);
+        // read file size
+        long size = dataInputStream.readLong();
+        byte[] buffer = new byte[4 * 1024];
+        while (size > 0 && (bytes = dataInputStream.read(buffer, 0, (int) Math.min(buffer.length, size))) != -1) {
+            fileOutputStream.write(buffer, 0, bytes);
+            // read upto file size
+            size -= bytes;
+        }
+        fileOutputStream.close();
+
+    }
+
+    public static ArrayList<String> getToDownlaod() {
+        return toDownload;
     }
 }
