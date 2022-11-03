@@ -50,14 +50,12 @@ public class FileUpdater {
                 dataInputStream = new DataInputStream(clientSocket.getInputStream());
                 dataOutputStream = new DataOutputStream(clientSocket.getOutputStream());
                 BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                //Sending all file in ToDownload
-                //toDownload = FileManager.getToDownlaod();
+                //reading the client request
                 String filePath = in.readLine();
                 System.out.println("****** Sending file ******* \n");
                 sendFile(filePath, clientSocket, dataOutputStream);
                 
-
-           
+          
                 //dataInputStream.close();
                 //dataOutputStream.close();
                 //clientSocket.close();

@@ -61,7 +61,7 @@ public class FileManager {
         if (!osserva.exists()) {
             toDownload.add(OSSERVA_PATH);
             System.out.println("file > osserva not found" + toDownload.get(0));
-        } 
+        }
         if (!parla.exists()) {
             toDownload.add(PARLA_PATH);
             System.out.println("file > parla not found");
@@ -73,31 +73,32 @@ public class FileManager {
         if (!usa.exists()) {
             toDownload.add(USA_PATH);
             System.out.println("file > usa not found");
-        } 
+        }
         if (!vai.exists()) {
             toDownload.add(VAI_PATH);
             System.out.println("file > vai not found");
-        } 
-        
+        }
+
         if (toDownload.size() > 0) {
-            System.out.println("rilavati" + " file mancanti o corrotti , correzione in corso...");
-            
-            //connection to server
-            try (Socket socket = new Socket("localhost", 5000)) {
-                dataInputStream = new DataInputStream(socket.getInputStream());
-                PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
-                 
-                for (int i = 0; i < toDownload.size(); i++) {
-                    String filePath = toDownload.get(i); 
+            System.out.println("rilavati " + toDownload.size() + " file mancanti o corrotti , correzione in corso...");
+            for (int i = 0; i < toDownload.size(); i++) {
+                try (Socket socket = new Socket("localhost", 5000)) {
+                    dataInputStream = new DataInputStream(socket.getInputStream());
+                    PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+
+                    String filePath = toDownload.get(i);
                     out.println(filePath);
                     System.out.println("Richiesto downlaod >" + filePath);
                     receiveFile(filePath, dataInputStream);
+                    System.out.println("scaricati " + i + "file");
+
+                    socket.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-                
-                socket.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            } 
+            }
+            //connection to server
+
         }
 
         //creation Map <nameFile, path>
