@@ -16,6 +16,8 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,18 +27,25 @@ public class FileUpdater {
 
     private static DataOutputStream dataOutputStream = null;
     private static DataInputStream dataInputStream = null;
-    private static final String osservaPath = "./src/main/java/server/resoruces/osserva.txt";
-    private static final String parlaPath = "./src/main/java/server/resoruces/parla.txt";
-    private static final String prendiPath = "./src/main/java/server/resoruces/prendi.txt";
-    private static final String usaPath = "./src/main/java/server/resoruces/usa.txt";
-    private static final String vaiPath = "./src/main/java/server/resoruces/vai.txt";
+    
+    private static final String osservaPath = "./src/main/java/server/resources/osserva.txt";
+    private static File osserva = new File(osservaPath);
+    private static final String parlaPath = "./src/main/java/server/resources/parla.txt";
+    private static File parla = new File(parlaPath);
+    private static final String prendiPath = "./src/main/java/server/resources/prendi.txt";
+    private static File prendi = new File(prendiPath);
+    private static final String usaPath = "./src/main/java/server/resources/usa.txt";
+    private static File usa = new File(usaPath);
+    private static final String vaiPath = "./src/main/java/server/resources/vai.txt";
+    private static File vai = new File(vaiPath);
 
     public static void main(String[] args) {
         try ( ServerSocket serverSocket = new ServerSocket(5000)) {
             System.out.println("listening to port:5000");
             //resto in attesa di richiesta 
+            Socket clientSocket;
             while (true) {
-                Socket clientSocket = serverSocket.accept();
+                clientSocket = serverSocket.accept();
                 System.out.println(clientSocket + " connected.");
                 dataInputStream = new DataInputStream(clientSocket.getInputStream());
                 dataOutputStream = new DataOutputStream(clientSocket.getOutputStream());
@@ -44,34 +53,35 @@ public class FileUpdater {
                 //Sending all file in ToDownload
                 //toDownload = FileManager.getToDownlaod();
                 String filePath = in.readLine();
-                System.out.println("Sending file");
-                sendFile(filePath, clientSocket);
+                System.out.println("****** Sending file ******* \n");
+                sendFile(filePath, clientSocket, dataOutputStream);
+                
 
-                dataInputStream.close();
-                dataOutputStream.close();
-                clientSocket.close();
-                System.out.println(clientSocket + " disconnected.");
+           
+                //dataInputStream.close();
+                //dataOutputStream.close();
+                //clientSocket.close();
+                //System.out.println(clientSocket + " disconnected.");
+               
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-
-        }
+        } 
     }
 
-    public static void sendFile(String toDownlaod, Socket clientSocket) throws IOException {
-        //metodo private che presi toDowload e toCheck, controlla le firme nei tocheck e quelli da aggiornare li inserisce nei toDownload
-        //successivamente nel while vado a mandare nei thread per il download solo i toDownload
-        //x PALLI parallelizzare toCheck-e-toDownload-mentre-carico-posso-controlalre-le firme e poi eventualmente aggiungerle alla coda di download
+    public static void sendFile(String toDownlaod, Socket clientSocket, DataOutputStream dataOutputStream) throws IOException {
         try {
-
             String serverPathFile = getServerPath(getNameFileByPath(toDownlaod));
+            System.out.println("going to download > " + serverPathFile);
             Thread t = new RequestThread(clientSocket, serverPathFile, dataOutputStream);
             t.start();
-
-        } finally {
-            clientSocket.close();
+            
+            
+        } catch (Exception e) {
+               e.printStackTrace();
         }
+                   
     }
 
     /**
@@ -79,7 +89,7 @@ public class FileUpdater {
      * file, to download it from the server local path
      *
      * @param path
-     * @return name of file
+     * @return a string with the name of file
      */
     private static String getNameFileByPath(String path) {
         StringTokenizer tokenizer = new StringTokenizer(path, "/");
@@ -91,13 +101,12 @@ public class FileUpdater {
 
         }
 
-        //System.out.println(tokenList.get(tokenList.size() - 1));
         return tokenList.get(tokenList.size() - 1);
     }
 
     private static List<String> getPathList() {
         List<String> pathList = new ArrayList<>();
-        pathList.add(osservaPath);
+        pathList.add(osserva.getPath());
         pathList.add(parlaPath);
         pathList.add(prendiPath);
         pathList.add(usaPath);
@@ -111,15 +120,15 @@ public class FileUpdater {
      */
     private static String getServerPath(String fileName) {
         List<String> pathList = getPathList();
-        String path;
+        System.out.println("searching for " + fileName);
         for (int i = 0; i < pathList.size(); i++) {
-
             if (pathList.get(i).contains(fileName)) {
+                System.out.println("send this> " + pathList.get(i));
                 return pathList.get(i);
             }
         }
+
         return "-1";
     }
-    //metodo private che presi toDowload e toCheck, controlla le firme nei tocheck e quelli da aggiornare li inserisce nei toDownload
-    //successivamente nel while vado a mandare nei thread per il download solo i toDownload
+
 }

@@ -59,51 +59,45 @@ public class FileManager {
         File vai = new File(VAI_PATH);
 
         if (!osserva.exists()) {
-            toDownload.add(osserva.getName());
-            System.out.println("file > osserva not found");
-        } else {
-            toCheck.add(OSSERVA_PATH);
-        }
+            toDownload.add(OSSERVA_PATH);
+            System.out.println("file > osserva not found" + toDownload.get(0));
+        } 
         if (!parla.exists()) {
-            toDownload.add(parla.getName());
+            toDownload.add(PARLA_PATH);
             System.out.println("file > parla not found");
-        } else {
-            toCheck.add(PARLA_PATH);
         }
         if (!prendi.exists()) {
-            toDownload.add(prendi.getName());
+            toDownload.add(PRENDI_PATH);
             System.out.println("file > prendi not found");
-        } else {
-            toCheck.add(PRENDI_PATH);
         }
         if (!usa.exists()) {
-            toDownload.add(usa.getName());
+            toDownload.add(USA_PATH);
             System.out.println("file > usa not found");
-        } else {
-            toCheck.add(USA_PATH);
-        }
+        } 
         if (!vai.exists()) {
-            toDownload.add(vai.getName());
+            toDownload.add(VAI_PATH);
             System.out.println("file > vai not found");
-        } else {
-            toCheck.add(VAI_PATH);
-        }
-
+        } 
+        
         if (toDownload.size() > 0) {
-            System.out.println("rilavati file mancati, corrotti o non aggiornati, correzione in corso...");
+            System.out.println("rilavati" + " file mancanti o corrotti , correzione in corso...");
+            
             //connection to server
             try (Socket socket = new Socket("localhost", 5000)) {
                 dataInputStream = new DataInputStream(socket.getInputStream());
-                 PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+                PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
                  
                 for (int i = 0; i < toDownload.size(); i++) {
                     String filePath = toDownload.get(i); 
                     out.println(filePath);
-                    receiveFile(filePath);
+                    System.out.println("Richiesto downlaod >" + filePath);
+                    receiveFile(filePath, dataInputStream);
                 }
+                
+                socket.close();
             } catch (Exception e) {
                 e.printStackTrace();
-            }
+            } 
         }
 
         //creation Map <nameFile, path>
@@ -117,7 +111,7 @@ public class FileManager {
         return filePahts;
     }
 
-    private static void receiveFile(String filePath) throws Exception {
+    private static void receiveFile(String filePath, DataInputStream dataInputStream) throws Exception {
         int bytes = 0;
         FileOutputStream fileOutputStream = new FileOutputStream(filePath);
         // read file size
@@ -128,7 +122,7 @@ public class FileManager {
             // read upto file size
             size -= bytes;
         }
-        fileOutputStream.close();
+        //fileOutputStream.close();
 
     }
 

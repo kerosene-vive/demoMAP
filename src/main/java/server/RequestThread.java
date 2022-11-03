@@ -25,6 +25,7 @@ public class RequestThread extends Thread {
     public RequestThread(Socket socket, String path, DataOutputStream dataOutputStream) {
         this.socket = socket;
         this.path = path;
+        this.dataOutputStream = dataOutputStream;
 
     }
 
@@ -48,14 +49,8 @@ public class RequestThread extends Thread {
             }
             fileInputStream.close();
         } catch (IOException ex) {
+            System.out.println("catch thread");
             System.err.println(ex);
-        } finally {
-            System.out.println("closing...");
-            try {
-                socket.close();
-            } catch (IOException ex) {
-                System.err.println(ex);
-            }
         }
 
     }
