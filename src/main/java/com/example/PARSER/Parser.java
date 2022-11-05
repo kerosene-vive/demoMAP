@@ -33,6 +33,12 @@ public class Parser {
     }
 
 
+    public static String parserFromFrame(String text) {
+        /*
+        qui il parser dovrà fare tutte le operazioni che servono
+        */
+        return "stringa che voglio stampare";
+    }
     
     public static void parserGame() {
        Scanner sc = new Scanner(System.in);

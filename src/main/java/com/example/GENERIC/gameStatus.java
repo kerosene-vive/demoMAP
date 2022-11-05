@@ -110,10 +110,10 @@ public static void init() {
 
 
 public static void save() {
- DBTest.save(currentRoom, rooms, npcs, items);
+ DatabaseManager.save(currentRoom, rooms, npcs, items);
 }
 public static void load() {
-    DBTest.load();
+    DatabaseManager.load();
     isGameRunning=true;
 }
 

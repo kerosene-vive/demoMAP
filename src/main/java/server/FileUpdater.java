@@ -83,9 +83,9 @@ public class FileUpdater {
     }
 
     /**
-     * cause the client send the missing path, we have to know only the name of
+     * 'cause the client send the missing path, we have to know only the name of
      * file, to download it from the server local path
-     *
+     * -> the method split on '/' the path and take the last token.
      * @param path
      * @return a string with the name of file
      */
@@ -104,7 +104,7 @@ public class FileUpdater {
 
     private static List<String> getPathList() {
         List<String> pathList = new ArrayList<>();
-        pathList.add(osserva.getPath());
+        pathList.add(osservaPath);
         pathList.add(parlaPath);
         pathList.add(prendiPath);
         pathList.add(usaPath);

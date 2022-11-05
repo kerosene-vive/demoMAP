@@ -22,14 +22,14 @@ import com.example.GENERIC.room;
  *
  * @author PPiC
  */
-public class DBTest {
+public class DatabaseManager {
 
     /**
      * @param args the command line arguments
      */
     public static void save(room currentRoom,Set<room> rooms,Set<npc> npcs,Set<item> items) {
         //ConnectionDB.connectToDB();
-        Connection conn =DBTest.connectToDB();
+        Connection conn =DatabaseManager.connectToDB();
         if (conn != null) {
             deleteTables(conn);
             createTable(conn);
@@ -49,7 +49,7 @@ public class DBTest {
 
 
     public static void load() {
-        Connection conn =DBTest.connectToDB();
+        Connection conn =DatabaseManager.connectToDB();
         if (conn != null) {
             if(checkIfDatabaseEmpty(conn)) {
                 loadGameStatus(conn);
