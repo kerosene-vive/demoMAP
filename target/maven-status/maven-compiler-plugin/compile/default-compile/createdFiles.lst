@@ -2,14 +2,13 @@ com\example\GENERIC\item.class
 dbmanager\DBTest.class
 com\example\ENGINE\engine.class
 com\example\PARSER\Parser.class
+server\RequestThread.class
 com\example\GENERIC\verbs.class
-dbmanager\DBManager.class
 com\example\GENERIC\room.class
 com\example\UTILITIES\jsonReader.class
 com\example\UTILITIES\api.class
 com\example\FRONTEND\frontEnd.class
 com\example\GENERIC\npc.class
-dbmanager\ConnectionDB.class
 com\example\GENERIC\noun.class
 filemanager\FileManager.class
 com\example\GENERIC\direction.class

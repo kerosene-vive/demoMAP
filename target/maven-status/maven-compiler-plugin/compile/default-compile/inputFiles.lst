@@ -1,17 +1,16 @@
-C:\Users\flava\OneDrive\Desktop\demoMAP\src\main\java\com\example\GENERIC\verbs.java
-C:\Users\flava\OneDrive\Desktop\demoMAP\src\main\java\com\example\GENERIC\noun.java
-C:\Users\flava\OneDrive\Desktop\demoMAP\src\main\java\com\example\GENERIC\npc.java
-C:\Users\flava\OneDrive\Desktop\demoMAP\src\main\java\com\example\UTILITIES\api.java
-C:\Users\flava\OneDrive\Desktop\demoMAP\src\main\java\dbmanager\ConnectionDB.java
-C:\Users\flava\OneDrive\Desktop\demoMAP\src\main\java\com\example\PARSER\Parser.java
-C:\Users\flava\OneDrive\Desktop\demoMAP\src\main\java\filemanager\NewMain.java
-C:\Users\flava\OneDrive\Desktop\demoMAP\src\main\java\com\example\ENGINE\engine.java
-C:\Users\flava\OneDrive\Desktop\demoMAP\src\main\java\com\example\GENERIC\direction.java
-C:\Users\flava\OneDrive\Desktop\demoMAP\src\main\java\com\example\GENERIC\item.java
-C:\Users\flava\OneDrive\Desktop\demoMAP\src\main\java\com\example\UTILITIES\jsonReader.java
-C:\Users\flava\OneDrive\Desktop\demoMAP\src\main\java\com\example\FRONTEND\frontEnd.java
-C:\Users\flava\OneDrive\Desktop\demoMAP\src\main\java\dbmanager\DBManager.java
-C:\Users\flava\OneDrive\Desktop\demoMAP\src\main\java\filemanager\FileManager.java
-C:\Users\flava\OneDrive\Desktop\demoMAP\src\main\java\com\example\GENERIC\room.java
-C:\Users\flava\OneDrive\Desktop\demoMAP\src\main\java\com\example\GENERIC\gameStatus.java
-C:\Users\flava\OneDrive\Desktop\demoMAP\src\main\java\dbmanager\DBTest.java
+C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\GENERIC\verbs.java
+C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\PARSER\Parser.java
+C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\ENGINE\engine.java
+C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\server\FileUpdater.java
+C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\server\RequestThread.java
+C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\UTILITIES\api.java
+C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\UTILITIES\jsonReader.java
+C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\GENERIC\gameStatus.java
+C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\GENERIC\noun.java
+C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\GENERIC\direction.java
+C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\GENERIC\room.java
+C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\dbmanager\DBTest.java
+C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\FRONTEND\frontEnd.java
+C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\GENERIC\item.java
+C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\GENERIC\npc.java
+C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\filemanager\FileManager.java
