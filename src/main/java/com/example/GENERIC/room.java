@@ -56,25 +56,25 @@ public class room extends noun implements java.io.Serializable {
     if (verb == "vai") {
       if (!isLocked && gameStatus.getCurrentRoom().isNear(this)) {
         gameStatus.currentRoom = this;
-        frontEnd.Description(this.Description);
+        frontEnd.description(this.Description);
       } 
       
       
       else {
         if (isLocked == true && gameStatus.getCurrentRoom().isNear(this)) {
-          frontEnd.Description("la stanza è chiusa");
+          frontEnd.description("la stanza è chiusa");
         } else {
           if (gameStatus.getCurrentRoom() == this) {
-            frontEnd.Description("sei già qui");
+            frontEnd.description("sei già qui");
           } else {
-            frontEnd.Description("la stanza non è vicina");
+            frontEnd.description("la stanza non è vicina");
           }
         }
       }
 
       return true;
     } else {
-      frontEnd.Description("Non puoi fare questo");
+      frontEnd.description("Non puoi fare questo");
       return false;
     }
    

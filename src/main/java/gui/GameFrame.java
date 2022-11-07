@@ -18,6 +18,15 @@ public class GameFrame extends javax.swing.JFrame {
      */
     public GameFrame() {
         initComponents();
+
+    }
+
+    public static void getOutputText(String text) {
+        outputBar.setText(text);
+    }
+
+    public static String getInputText() {
+        return inputBar.getText();
     }
 
     /**
@@ -73,20 +82,21 @@ public class GameFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inputBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputBarActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_inputBarActionPerformed
 
     private void inputBarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputBarKeyPressed
         /*
         nel momento in cui l'utente clicca "a capo" il testo scritto nel frame 
         dovrà essere recuperato, mandato al parser e "sbiancare" il testo.
-        */
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            outputBar.setText(Parser.parserFromFrame(inputBar.getText()));       
+         */
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             inputBar.setText("");
         }
-        
+
     }//GEN-LAST:event_inputBarKeyPressed
+
+
 
     /**
      * @param args the command line arguments
@@ -124,8 +134,8 @@ public class GameFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField inputBar;
+    private static javax.swing.JTextField inputBar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea outputBar;
+    private static javax.swing.JTextArea outputBar;
     // End of variables declaration//GEN-END:variables
 }

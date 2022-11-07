@@ -29,6 +29,7 @@ public class MenuFrame extends javax.swing.JFrame {
     public MenuFrame() {
         initComponents();
         initMenu();
+        
       
 
 
@@ -36,11 +37,14 @@ public class MenuFrame extends javax.swing.JFrame {
 
     private void initMenu() {
         setResizable(false);
-        setTitle("menu");
+        setSize(450, 600);
+        setTitle("Menu'");
         ImageIcon icon = new ImageIcon("images/pippoKill.png");
         setIconImage(icon.getImage());
         Image pippo = new Image();
         pippo.setVisible(true);
+        imageLabel.setText("");
+        imageLabel.setIcon(icon);
     }
 
     private void openGame() {
@@ -59,6 +63,7 @@ public class MenuFrame extends javax.swing.JFrame {
         nuovaPartita = new javax.swing.JButton();
         caricaPartita = new javax.swing.JButton();
         imagePanel = new javax.swing.JPanel();
+        imageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,15 +93,22 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
+        imageLabel.setText("jLabel1");
+
         javax.swing.GroupLayout imagePanelLayout = new javax.swing.GroupLayout(imagePanel);
         imagePanel.setLayout(imagePanelLayout);
         imagePanelLayout.setHorizontalGroup(
             imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(imagePanelLayout.createSequentialGroup()
+                .addComponent(imageLabel)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         imagePanelLayout.setVerticalGroup(
             imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 181, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, imagePanelLayout.createSequentialGroup()
+                .addContainerGap(85, Short.MAX_VALUE)
+                .addComponent(imageLabel)
+                .addGap(80, 80, 80))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -190,6 +202,7 @@ public class MenuFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton caricaPartita;
+    private javax.swing.JLabel imageLabel;
     private javax.swing.JPanel imagePanel;
     private javax.swing.JButton nuovaPartita;
     // End of variables declaration//GEN-END:variables

@@ -30,7 +30,7 @@ public class direction extends noun implements java.io.Serializable {
        }
       
        }
-        frontEnd.Description("Non puoi andare da quella parte");
+        frontEnd.description("Non puoi andare da quella parte");
          return false;
     }
     

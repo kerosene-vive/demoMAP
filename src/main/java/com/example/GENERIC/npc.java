@@ -39,22 +39,22 @@ public class npc extends  noun  implements java.io.Serializable {
         {
         if(verb.equals("parla"))
         {
-            frontEnd.Description("Ciao sono "+this.name);
-            frontEnd.Description(this.Description);
+            frontEnd.description("Ciao sono "+this.name);
+            frontEnd.description(this.Description);
             Parser.rememberMyName(this);
             return true;
         }
         for(List<String> input : executeInputOutput.keySet())
         {
-            frontEnd.Description(input.get(0));
+            frontEnd.description(input.get(0));
 
             for(String word : input)
             {
-             frontEnd.Description(word);
+             frontEnd.description(word);
                 //if word is contained in verb  
                 if(verb.contains(word))
                 {
-                    frontEnd.Description(executeInputOutput.get(input));
+                    frontEnd.description(executeInputOutput.get(input));
                     return true;
                 }
             }

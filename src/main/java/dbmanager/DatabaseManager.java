@@ -34,7 +34,7 @@ public class DatabaseManager {
             deleteTables(conn);
             createTable(conn);
             saveGameStatus(conn, currentRoom, rooms, npcs, items);
-            frontEnd.Description("Salvataggio completato, puoi continuare a giocare");
+            frontEnd.description("Salvataggio completato, puoi continuare a giocare");
             try {
                 conn.close();
             } catch (SQLException e) {
@@ -53,11 +53,11 @@ public class DatabaseManager {
         if (conn != null) {
             if(checkIfDatabaseEmpty(conn)) {
                 loadGameStatus(conn);
-                frontEnd.Description("Caricamento completato, puoi continuare a giocare");
+                frontEnd.description("Caricamento completato, puoi continuare a giocare");
             }
             else {
                 
-                frontEnd.Description("Non hai salvato nessuna partita, non posso caricare");
+                frontEnd.description("Non hai salvato nessuna partita, non posso caricare");
             }
             
             

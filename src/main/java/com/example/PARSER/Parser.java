@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 
 public class Parser {
-    static private noun name=null;
+    private static noun name=null;
 
     public static void lobby() {
        //if the player press G, the game starts
@@ -124,12 +124,12 @@ public static boolean directionHelper(String input) {
 
    if(input.contains("dove")||input.contains("help"))
    {
-    frontEnd.Description(gameStatus.getCurrentRoom().getDescription());
+    frontEnd.description(gameStatus.getCurrentRoom().getDescription());
   for(direction direction : gameStatus.getDirection())
   {
     if(gameStatus.getCurrentRoom().getRoom(direction)!=null)
     {
-      frontEnd.Description("a  "+direction.getName()+ " c'è "+ gameStatus.getCurrentRoom().getRoom(direction).getName());
+      frontEnd.description("a  "+direction.getName()+ " c'è "+ gameStatus.getCurrentRoom().getRoom(direction).getName());
     }
   }
     return true;

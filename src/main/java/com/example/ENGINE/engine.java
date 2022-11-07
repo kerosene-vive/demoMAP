@@ -4,6 +4,7 @@ import com.example.GENERIC.*;
 import com.example.PARSER.*;
 import com.example.UTILITIES.jsonReader;
 import com.example.FRONTEND.*;
+import gui.GameFrame;
 import gui.MenuFrame;
 import java.io.IOException;
 
@@ -13,7 +14,8 @@ import org.json.JSONException;
 public class engine {
 
     public static void main(String[] args) {
-
+        GameFrame gameGui = new GameFrame();
+        gameGui.setVisible(true);
         verbs.init();
 
         try {

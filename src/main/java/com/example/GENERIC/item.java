@@ -43,7 +43,7 @@ public void setUsable(boolean isUsable) {
 
         if(verb.equals("prendi") && this.currentRoom==gameStatus.currentRoom)
         {
-            frontEnd.Description(frasePrendi);
+            frontEnd.description(frasePrendi);
             isUsable=true;
             return true;
         }
@@ -65,7 +65,7 @@ public void setUsable(boolean isUsable) {
    
 
     public void chiaveExecute() {
-        frontEnd.Description(fraseUsa);
+        frontEnd.description(fraseUsa);
         isUsable=false;
         gameStatus.getRoom(10).setIsLocked(false);
        
