@@ -17,13 +17,11 @@ import javax.swing.JPanel;
  */
 public class Image extends JPanel {
        private BufferedImage image;
-       private String pippoKill = ".src/main/java/gui/img/pippoKill.png";
-       private File fileImg = new File(pippoKill);
+
        
     public Image() {
        try {               
-
-          image = ImageIO.read(fileImg);
+          image = ImageIO.read(new File("images/pippoKill.png"));
        } catch (IOException ex) {
             ex.printStackTrace();
        }

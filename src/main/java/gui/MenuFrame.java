@@ -29,19 +29,18 @@ public class MenuFrame extends javax.swing.JFrame {
     public MenuFrame() {
         initComponents();
         initMenu();
-        ImageIcon pippo = new ImageIcon(fileImg.getPath());
-        JLabel pic = new JLabel(pippo);
-        imagePanel.add(pic);
+      
+
 
     }
 
     private void initMenu() {
         setResizable(false);
         setTitle("menu");
-        setBackground(Color.yellow);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(fileImg.getPath()));
-        imagePanel.setVisible(true);
-        imagePanel.doLayout();
+        ImageIcon icon = new ImageIcon("images/pippoKill.png");
+        setIconImage(icon.getImage());
+        Image pippo = new Image();
+        pippo.setVisible(true);
     }
 
     private void openGame() {
@@ -97,7 +96,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         imagePanelLayout.setVerticalGroup(
             imagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 187, Short.MAX_VALUE)
+            .addGap(0, 181, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -117,6 +116,7 @@ public class MenuFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(imagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -183,6 +183,7 @@ public class MenuFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MenuFrame().setVisible(true);
+                
             }
         });
     }
