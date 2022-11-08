@@ -8,7 +8,7 @@ import dbmanager.*;
 
 
 public class gameStatus {
-    static room currentRoom;
+    public static room currentRoom;
     static Set<room> rooms;
     static Set<direction> directions;
     static Set<npc> npcs;

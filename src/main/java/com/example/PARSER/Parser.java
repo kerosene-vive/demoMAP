@@ -1,5 +1,8 @@
 package com.example.PARSER;
 import com.example.GENERIC.*;
+
+import gui.Telefono;
+
 import com.example.FRONTEND.*;
 import java.util.Scanner;
 
@@ -60,10 +63,15 @@ public class Parser {
         }
         if(input.equals("osserva"))
         {
-            frontEnd.look();
+            frontEnd.help();
             return;
         }
-      
+        if(input.equals("telefono"))
+        {
+            Telefono t = new Telefono();
+            t.setVisible(true);
+            return;
+        }
         String verb;
         String name;//for room ,npc,items,and directions
         if (verbs.getVerb(input).equals("vai")) {
