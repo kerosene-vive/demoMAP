@@ -325,15 +325,7 @@ public class DBTest {
           
         }
         
-        for(item itemItem2 : itemstoLoad){
-            System.out.println(itemItem2.getName() + " " + itemItem2.isUsable()+ " " + itemItem2.getCurrentRoom().getName());
-        }
-        for(npc npcItem2 : npcsToLoad){
-            System.out.println(npcItem2.getName() + " " + npcItem2.getCurrentRoom().getName());
-        }
-        for(room roomItem2 : rooms){
-            System.out.println(roomItem2.getName() + " " + roomItem2.isLocked());
-        }
+      
      
         gameStatus.loadRooms(rooms);
         gameStatus.loadNpcs(npcsToLoad);

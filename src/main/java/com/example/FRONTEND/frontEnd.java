@@ -1,5 +1,8 @@
 package com.example.FRONTEND;
 
+import com.example.GENERIC.gameStatus;
+import com.example.GENERIC.item;
+import com.example.GENERIC.npc;
 import com.example.UTILITIES.*;;
 
 
@@ -35,12 +38,54 @@ public class frontEnd {
     }
     public static void help() {
         System.out.println("================================");
-        System.out.println("*   QUA' METTEREMO UNA MINI GUIDA AL GIOCO..  *");
+        System.out.println("*  USA vai e le direzioni o i nomi delle stanze per spostarti *");
+        System.out.println("================================");
+        System.out.println("*  USA osserva per capire cosa hai intorno *");
+        System.out.println("================================");
+        System.out.println("*  USA prendi e i nomi degli oggetti per raccoglierli *");
+        System.out.println("================================");
+        System.out.println("*  USA usa e i nomi degli oggetti per usarli *");
+        System.out.println("================================");
+        System.out.println("*  USA parla e i nomi degli npc per parlare con loro *");
         System.out.println("================================");
     }
     public static void exit() {
         System.out.println("================================");
         System.out.println("*   GRAZIE PER AVER GIOCATO  *");
+        System.out.println("================================");
+    }
+    public static void look() {
+        System.out.println("================================");
+
+        System.out.println("*   "+gameStatus.getCurrentRoom().getDescription()+"  *");
+        for (npc personaggioNpc : gameStatus.getNpcs()) {
+            if(personaggioNpc.getCurrentRoom().equals(gameStatus.getCurrentRoom()))
+            {
+                if(personaggioNpc.getDescription()!=null)
+                {
+                    System.out.println("*   "+personaggioNpc.getDescription()+"  *");
+                }
+             
+               
+            }
+          
+        }
+        for(item oggetto : gameStatus.getItems())
+        {
+            if(oggetto.getCurrentRoom().equals(gameStatus.getCurrentRoom()))
+            {
+                if(oggetto.getDescription()!=null)
+                {
+                    System.out.println("*   "+oggetto.getDescription()+"  *");
+                }
+             
+            }
+        }
+            
+        
+        System.out.println("*   "+gameStatus.getCurrentRoom().getDescription()+"  *");
+        System.out.println("================================");
+        System.out.println("================================");
         System.out.println("================================");
     }
 }

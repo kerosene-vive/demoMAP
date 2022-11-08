@@ -24,7 +24,12 @@ public class npc extends  noun  implements java.io.Serializable {
         this.currentRoom=currentRoom;
     }
   
-    
+    public String getDescription() {
+        return Description;
+    }
+    public String getName() {
+        return name;
+    }
   
     public room getCurrentRoom() {
         return currentRoom;

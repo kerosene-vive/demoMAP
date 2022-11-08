@@ -58,7 +58,12 @@ public class Parser {
             gameStatus.save();
             return;
         }
-       System.out.println(input);
+        if(input.equals("osserva"))
+        {
+            frontEnd.look();
+            return;
+        }
+      
         String verb;
         String name;//for room ,npc,items,and directions
         if (verbs.getVerb(input).equals("vai")) {

@@ -2,7 +2,6 @@ package com.example.GENERIC;
 
 import com.example.FRONTEND.*;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -35,6 +34,12 @@ public class room extends noun implements java.io.Serializable {
     this.id = id;
   }
 
+  public String getDescription() {
+    return Description;
+  }
+  public String getName() {
+    return name;
+  }
  
 
   public boolean isLocked() {
