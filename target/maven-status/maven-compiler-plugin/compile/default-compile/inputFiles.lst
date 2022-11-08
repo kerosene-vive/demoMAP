@@ -1,16 +1,19 @@
-C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\GENERIC\verbs.java
-C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\PARSER\Parser.java
-C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\ENGINE\engine.java
-C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\server\FileUpdater.java
-C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\server\RequestThread.java
-C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\UTILITIES\api.java
-C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\UTILITIES\jsonReader.java
-C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\GENERIC\gameStatus.java
-C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\GENERIC\noun.java
-C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\GENERIC\direction.java
-C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\GENERIC\room.java
-C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\dbmanager\DBTest.java
-C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\FRONTEND\frontEnd.java
-C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\GENERIC\item.java
-C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\com\example\GENERIC\npc.java
-C:\Users\Antonio Pallara\Desktop\demoMAP\src\main\java\filemanager\FileManager.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\com\example\GENERIC\npc.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\server\FileUpdater.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\gui\Telefono.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\com\example\GENERIC\noun.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\com\example\GENERIC\gameStatus.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\com\example\PARSER\Parser.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\server\RequestThread.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\com\example\ENGINE\engine.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\com\example\FRONTEND\frontEnd.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\com\example\GENERIC\direction.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\com\example\GENERIC\verbs.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\filemanager\FileManager.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\gui\MapFrame.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\com\example\GENERIC\item.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\com\example\UTILITIES\jsonReader.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\dbmanager\DBTest.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\com\example\UTILITIES\api.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\gui\GuidaFrame.java
+C:\Users\PPiC\OneDrive - Università degli Studi di Bari\Desktop\project telefono\demoMAP\src\main\java\com\example\GENERIC\room.java
