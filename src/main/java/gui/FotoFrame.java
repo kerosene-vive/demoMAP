@@ -4,7 +4,7 @@
  */
 package gui;
 
-import com.example.GENERIC.gameStatus;
+import com.example.GENERIC.GameStatus;
 import javax.swing.ImageIcon;
 
 /**
@@ -22,8 +22,8 @@ public class FotoFrame extends javax.swing.JFrame {
     }
 
     private void setFotocamera() {
-      
-        String roomName = gameStatus.getCurrentRoom().getName();
+
+        String roomName = GameStatus.getCurrentRoom().getName();
         ImageIcon fotoImg = new ImageIcon("images/fotocamera.png");
         ImageIcon roomImg = new ImageIcon("images/" + roomName + ".png");
         setIconImage(fotoImg.getImage());

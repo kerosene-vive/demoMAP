@@ -82,7 +82,7 @@ public class FileManager {
         if (toDownload.size() > 0) {
             System.out.println("rilavati " + toDownload.size() + " file mancanti o corrotti , correzione in corso...");
             for (int i = 0; i < toDownload.size(); i++) {
-                try (Socket socket = new Socket("localhost", 5000)) {
+                try ( Socket socket = new Socket("localhost", 5000)) {
                     dataInputStream = new DataInputStream(socket.getInputStream());
                     PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
 

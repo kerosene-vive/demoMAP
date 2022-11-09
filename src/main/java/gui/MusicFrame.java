@@ -15,9 +15,9 @@ import mediaPlayer.MediaPlayerThread;
  * @author flava
  */
 public class MusicFrame extends javax.swing.JFrame {
+
     MediaPlayerThread tPlayer = new MediaPlayerThread();
     boolean isPlaying = false;
-
 
     /**
      * Creates new form MusicFrame
@@ -29,14 +29,15 @@ public class MusicFrame extends javax.swing.JFrame {
 
     private void setMusic() {
         setTitle("Lettore");
-        setSize(400,500);
+        setSize(400, 500);
         setResizable(false);
         ImageIcon musicImage = new ImageIcon("images/music.png");
         setIconImage(musicImage.getImage());
         musicImg.setIcon(musicImage);
         musicImg.setText("");
-      
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,7 +94,7 @@ public class MusicFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void playButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseClicked
-        if(isPlaying == false) {
+        if (isPlaying == false) {
             tPlayer.run();
             isPlaying = true;
         }

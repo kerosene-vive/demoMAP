@@ -27,7 +27,7 @@ public class FileUpdater {
 
     private static DataOutputStream dataOutputStream = null;
     private static DataInputStream dataInputStream = null;
-    
+
     private static final String osservaPath = "./src/main/java/server/resources/osserva.txt";
     private static File osserva = new File(osservaPath);
     private static final String parlaPath = "./src/main/java/server/resources/parla.txt";
@@ -54,18 +54,16 @@ public class FileUpdater {
                 String filePath = in.readLine();
                 System.out.println("****** Sending file ******* \n");
                 sendFile(filePath, clientSocket, dataOutputStream);
-                
-          
+
                 //dataInputStream.close();
                 //dataOutputStream.close();
                 //clientSocket.close();
                 //System.out.println(clientSocket + " disconnected.");
-               
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
     }
 
     public static void sendFile(String toDownlaod, Socket clientSocket, DataOutputStream dataOutputStream) throws IOException {
@@ -74,12 +72,11 @@ public class FileUpdater {
             System.out.println("going to download > " + serverPathFile);
             Thread t = new RequestThread(clientSocket, serverPathFile, dataOutputStream);
             t.start();
-            
-            
+
         } catch (Exception e) {
-               e.printStackTrace();
+            e.printStackTrace();
         }
-                   
+
     }
 
     /**

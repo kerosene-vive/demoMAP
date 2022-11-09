@@ -1,15 +1,12 @@
 package com.example.FRONTEND;
 
-import com.example.GENERIC.gameStatus;
-import com.example.GENERIC.item;
-import com.example.GENERIC.npc;
-import com.example.UTILITIES.*;;
+import com.example.GENERIC.GameStatus;
+import com.example.GENERIC.Item;
+import com.example.GENERIC.Npc;
+import com.example.UTILITIES.*;
 
+public class FrontEnd {
 
-
-
-
-public class frontEnd {
     public static void lobby() {
         System.out.println("================================");
         System.out.println("*   IL SEGRETO DEL PIANO -2 *");
@@ -19,23 +16,26 @@ public class frontEnd {
         System.out.println("===PREMI====C====PER===CARICARE==UNA==PARTITA");
         System.out.println("===PREMI====H====PER===HELP");
     }
+
     public static void gameStart() {
         System.out.println("================================");
         System.out.println("*   WELCOME BACK  *");
-        System.out.println("AL DIPARTIMENTO DI INFORMATICA CI SONO "+api.wheather()+" GRADI CORRENTEMENTE");
+        System.out.println("AL DIPARTIMENTO DI INFORMATICA CI SONO " + Api.wheather() + " GRADI CORRENTEMENTE");
         System.out.println("================================");
     }
+
     public static void error() {
         System.out.println("================================");
         System.out.println("*   INPUT NON VALIDO  *");
         System.out.println("================================");
     }
-    public static void Description(String string)
-    {
+
+    public static void description(String string) {
         System.out.println("================================");
-        System.out.println("*   "+string+"  *");
+        System.out.println("*   " + string + "  *");
         System.out.println("================================");
     }
+
     public static void help() {
         System.out.println("================================");
         System.out.println("*  USA vai e le direzioni o i nomi delle stanze per spostarti *");
@@ -49,41 +49,36 @@ public class frontEnd {
         System.out.println("*  USA parla e i nomi degli npc per parlare con loro *");
         System.out.println("================================");
     }
+
     public static void exit() {
         System.out.println("================================");
         System.out.println("*   GRAZIE PER AVER GIOCATO  *");
         System.out.println("================================");
     }
+
     public static void look() {
         System.out.println("================================");
 
-        System.out.println("*   "+gameStatus.getCurrentRoom().getDescription()+"  *");
-        for (npc personaggioNpc : gameStatus.getNpcs()) {
-            if(personaggioNpc.getCurrentRoom().equals(gameStatus.getCurrentRoom()))
-            {
-                if(personaggioNpc.getDescription()!=null)
-                {
-                    System.out.println("*   "+personaggioNpc.getDescription()+"  *");
+        System.out.println("*   " + GameStatus.getCurrentRoom().getDescription() + "  *");
+        for (Npc personaggioNpc : GameStatus.getNpcs()) {
+            if (personaggioNpc.getCurrentRoom().equals(GameStatus.getCurrentRoom())) {
+                if (personaggioNpc.getDescription() != null) {
+                    System.out.println("*   " + personaggioNpc.getDescription() + "  *");
                 }
-             
-               
+
             }
-          
+
         }
-        for(item oggetto : gameStatus.getItems())
-        {
-            if(oggetto.getCurrentRoom().equals(gameStatus.getCurrentRoom()))
-            {
-                if(oggetto.getDescription()!=null)
-                {
-                    System.out.println("*   "+oggetto.getDescription()+"  *");
+        for (Item oggetto : GameStatus.getItems()) {
+            if (oggetto.getCurrentRoom().equals(GameStatus.getCurrentRoom())) {
+                if (oggetto.getDescription() != null) {
+                    System.out.println("*   " + oggetto.getDescription() + "  *");
                 }
-             
+
             }
         }
-            
-        
-        System.out.println("*   "+gameStatus.getCurrentRoom().getDescription()+"  *");
+
+        System.out.println("*   " + GameStatus.getCurrentRoom().getDescription() + "  *");
         System.out.println("================================");
         System.out.println("================================");
         System.out.println("================================");

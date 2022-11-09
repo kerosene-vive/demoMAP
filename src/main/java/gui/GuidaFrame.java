@@ -28,7 +28,7 @@ public class GuidaFrame extends javax.swing.JFrame {
         helpImg.setIcon(helpImage);
         helpImg.setText("");
         setTitle("guida");
-        setSize(430,340);
+        setSize(430, 340);
         setResizable(false);
 
     }

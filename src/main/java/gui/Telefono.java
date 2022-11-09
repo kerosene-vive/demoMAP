@@ -15,7 +15,9 @@ import javax.swing.SwingUtilities;
  * @author PPiC
  */
 public class Telefono extends javax.swing.JFrame {
+
     private static String currentRoom;
+
     /**
      * Creates new form Telefono
      */
@@ -23,14 +25,14 @@ public class Telefono extends javax.swing.JFrame {
         initComponents();
         setPhone();
     }
-    
+
     private void setPhone() {
         setSize(400, 550);
         setResizable(false);
         ImageIcon phoneIcon = new ImageIcon("images/phone.png");
         setIconImage(phoneIcon.getImage());
         setName("Phone");
-        
+
     }
 
     /**
@@ -128,10 +130,10 @@ public class Telefono extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mapButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapButtonMouseClicked
-        
+
         MapFrame mapFrame = new MapFrame();
         mapFrame.setVisible(true);
-        
+
         JComponent comp = (JComponent) evt.getSource();
         Window win = SwingUtilities.getWindowAncestor(comp);
         win.dispose();
@@ -142,7 +144,7 @@ public class Telefono extends javax.swing.JFrame {
     }//GEN-LAST:event_mapButtonActionPerformed
 
     private void guidaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guidaButtonActionPerformed
-        
+
 
     }//GEN-LAST:event_guidaButtonActionPerformed
 
@@ -156,9 +158,9 @@ public class Telefono extends javax.swing.JFrame {
     }//GEN-LAST:event_guidaButtonMouseClicked
 
     private void fotocameraButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fotocameraButtonMouseClicked
-       FotoFrame fotoFrame = new FotoFrame();
-       //fotoFrame.setVisibile(true);
-        
+        FotoFrame fotoFrame = new FotoFrame();
+        //fotoFrame.setVisibile(true);
+
         JComponent comp = (JComponent) evt.getSource();
         Window win = SwingUtilities.getWindowAncestor(comp);
         win.dispose();

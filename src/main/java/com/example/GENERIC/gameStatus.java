@@ -1,121 +1,119 @@
 package com.example.GENERIC;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 import dbmanager.*;
- 
 
+public class GameStatus {
 
-public class gameStatus {
-    public static room currentRoom;
-    static Set<room> rooms;
-    static Set<direction> directions;
-    static Set<npc> npcs;
-    static Set<item> items;
-    static boolean isGameRunning=false;
+    public static Room currentRoom;
+    static Set<Room> rooms;
+    static Set<Direction> directions;
+    static Set<Npc> npcs;
+    static Set<Item> items;
+    static boolean isGameRunning = false;
 
+    public static Room getCurrentRoom() {
+        return currentRoom;
+    }
 
-public static room getCurrentRoom() {
-    return currentRoom;
-}
-public static Set<npc> getNpcs() {
-    return npcs;
-}
-public static Set<item> getItems() {
-    return items;
-}
-public static Set<room> getRooms() {
-    return rooms;
-}
-public static Set<direction> getDirection() {
+    public static Set<Npc> getNpcs() {
+        return npcs;
+    }
+
+    public static Set<Item> getItems() {
+        return items;
+    }
+
+    public static Set<Room> getRooms() {
+        return rooms;
+    }
+
+    public static Set<Direction> getDirection() {
         return directions;
-}
+    }
 
-public static void setCurrentRoom(room currentRoom) {
-    gameStatus.currentRoom = currentRoom;
-}
- public static void loadRooms(Set<room> rooms) {
-    //read from a json file rooms and put them in the set
-   gameStatus.rooms=rooms;
- }
- public static void loadNpcs(Set<npc> npcsSet) {
-    //read from a json file npcs and put them in the set
-    gameStatus.npcs=npcsSet;
-}
-public static void loadItems(Set<item> itemsSet) {
-    //read from a json file items and put them in the set
-    gameStatus.items=itemsSet;
-}
-public static boolean isGameRunning() {
-    return isGameRunning;
-}
+    public static void setCurrentRoom(Room currentRoom) {
+        GameStatus.currentRoom = currentRoom;
+    }
 
+    public static void loadRooms(Set<Room> rooms) {
+        //read from a json file rooms and put them in the set
+        GameStatus.rooms = rooms;
+    }
 
-public static room getRoom(int id) {
-    for(room room:rooms)
-    {
-        if(room.getId()==id)
-        {
-            return room;
+    public static void loadNpcs(Set<Npc> npcsSet) {
+        //read from a json file npcs and put them in the set
+        GameStatus.npcs = npcsSet;
+    }
+
+    public static void loadItems(Set<Item> itemsSet) {
+        //read from a json file items and put them in the set
+        GameStatus.items = itemsSet;
+    }
+
+    public static boolean isGameRunning() {
+        return isGameRunning;
+    }
+
+    public static Room getRoom(int id) {
+        for (Room room : rooms) {
+            if (room.getId() == id) {
+                return room;
+            }
+        }
+        return null;
+    }
+
+    public static void loadRoomsDirections(Map<Integer, List<Integer>> roomsDirections) {
+        for (Room room : rooms) {
+            int id = room.getId();
+            List<Integer> directions = roomsDirections.get(id);
+            room.setDirection(directions.get(0), directions.get(1), directions.get(2), directions.get(3));
+
         }
     }
-    return null;
-}
-public static void loadRoomsDirections(Map<Integer, List<Integer>> roomsDirections) {
-    for (room  room: rooms) {
-        int id=room.getId();
-        List<Integer> directions=roomsDirections.get(id);
-        room.setDirection(directions.get(0),directions.get(1),directions.get(2),directions.get(3));
-        
+
+    public static void loadDirections(Set<Direction> directions) {
+        //read from a json file directions and put them in the set
+        GameStatus.directions = directions;
     }
-}
 
-
-public static void loadDirections(Set<direction> directions) {
-    //read from a json file directions and put them in the set
-    gameStatus.directions=directions;
-}
-
-
-public static noun[] getNouns() {
-    noun[] nouns=new noun[rooms.size()+directions.size()+npcs.size()+items.size()];
-    int i=0;
-    for(room room:rooms)
-    {
-        nouns[i]=room;
-        i++;
+    public static Noun[] getNouns() {
+        Noun[] nouns = new Noun[rooms.size() + directions.size() + npcs.size() + items.size()];
+        int i = 0;
+        for (Room room : rooms) {
+            nouns[i] = room;
+            i++;
+        }
+        for (Direction direction : directions) {
+            nouns[i] = direction;
+            i++;
+        }
+        for (Npc npc : npcs) {
+            nouns[i] = npc;
+            i++;
+        }
+        for (Item item : items) {
+            nouns[i] = item;
+            i++;
+        }
+        return nouns;
     }
-    for(direction direction:directions)
-    {
-        nouns[i]=direction;
-        i++;
+
+    public static void init() {
+        setCurrentRoom(getRoom(1));
+        isGameRunning = true;
     }
-    for(npc npc:npcs)
-    {
-        nouns[i]=npc;
-        i++;
+
+    public static void save() {
+        DBTest.save(currentRoom, rooms, npcs, items);
     }
-    for(item item:items)
-    {
-        nouns[i]=item;
-        i++;
+
+    public static void load() {
+        DBTest.load();
+        isGameRunning = true;
     }
-    return nouns;
-}
-public static void init() {
-    setCurrentRoom(getRoom(1));
-    isGameRunning=true;
-}
-
-
-public static void save() {
- DBTest.save(currentRoom, rooms, npcs, items);
-}
-public static void load() {
-    DBTest.load();
-    isGameRunning=true;
-}
 
 }
-
