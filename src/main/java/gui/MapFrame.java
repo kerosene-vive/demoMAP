@@ -28,6 +28,7 @@ public class MapFrame extends javax.swing.JFrame {
         mapLabel.setIcon(mapImg);
         setName("Mappa");
         
+        
     }
 
     /**
@@ -40,8 +41,6 @@ public class MapFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         mapLabel = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mapLabel.setText("jLabel1");
 

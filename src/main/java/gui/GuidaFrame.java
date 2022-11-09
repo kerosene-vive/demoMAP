@@ -21,12 +21,13 @@ public class GuidaFrame extends javax.swing.JFrame {
     }
 
     private void setGuida(){
-        setSize(500,700);
+        setSize(430,350);
+        setResizable(false);
         ImageIcon guidaImg = new ImageIcon("images/guida.png");
         setIconImage(guidaImg.getImage());
-        textGuida.setText("SPIEGAZIONE COMANDI: vai direzione per spostarti \n osserva per strizzare gli occhi \n parla + personaggi per dialogare con i persongaggi \n"
-                + "prendi + ogetto per raccogliere un oggetto \n"
-                + "usa + nome uggetto per adoperarlo \n");
+        ImageIcon helpImage = new ImageIcon("images/help.png");
+        helpImg.setIcon(helpImage);
+        helpImg.setText("");
             
         
     }
@@ -39,22 +40,25 @@ public class GuidaFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        textGuida = new javax.swing.JTextField();
+        helpImg = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        textGuida.setEditable(false);
-        textGuida.setText("jTextField1");
+        helpImg.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(textGuida, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(helpImg)
+                .addContainerGap(351, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(textGuida, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(helpImg)
+                .addContainerGap(271, Short.MAX_VALUE))
         );
 
         pack();
@@ -96,6 +100,6 @@ public class GuidaFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField textGuida;
+    private javax.swing.JLabel helpImg;
     // End of variables declaration//GEN-END:variables
 }

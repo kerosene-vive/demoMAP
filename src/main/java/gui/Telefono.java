@@ -43,11 +43,9 @@ public class Telefono extends javax.swing.JFrame {
     private void initComponents() {
 
         guidaButton = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        musicButton = new javax.swing.JButton();
         fotocameraButton = new javax.swing.JButton();
         mapButton = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         guidaButton.setText("Guida");
         guidaButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -61,7 +59,17 @@ public class Telefono extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Musica");
+        musicButton.setText("Musica");
+        musicButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                musicButtonMouseClicked(evt);
+            }
+        });
+        musicButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                musicButtonActionPerformed(evt);
+            }
+        });
 
         fotocameraButton.setText("Fotocamera");
         fotocameraButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -95,7 +103,7 @@ public class Telefono extends javax.swing.JFrame {
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(mapButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
+                    .addComponent(musicButton, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(fotocameraButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -111,7 +119,7 @@ public class Telefono extends javax.swing.JFrame {
                     .addComponent(mapButton))
                 .addGap(93, 93, 93)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
+                    .addComponent(musicButton)
                     .addComponent(fotocameraButton))
                 .addContainerGap(106, Short.MAX_VALUE))
         );
@@ -160,6 +168,15 @@ public class Telefono extends javax.swing.JFrame {
         win.dispose();
     }//GEN-LAST:event_fotocameraButtonMouseClicked
 
+    private void musicButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_musicButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_musicButtonActionPerformed
+
+    private void musicButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_musicButtonMouseClicked
+        MusicFrame musicFrame = new MusicFrame();
+        musicFrame.setVisible(true);
+    }//GEN-LAST:event_musicButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -198,7 +215,7 @@ public class Telefono extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton fotocameraButton;
     private javax.swing.JButton guidaButton;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton mapButton;
+    private javax.swing.JButton musicButton;
     // End of variables declaration//GEN-END:variables
 }
