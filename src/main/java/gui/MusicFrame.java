@@ -16,6 +16,7 @@ import mediaPlayer.MediaPlayerThread;
  */
 public class MusicFrame extends javax.swing.JFrame {
     MediaPlayerThread tPlayer = new MediaPlayerThread();
+    boolean isPlaying = false;
 
 
     /**
@@ -91,7 +92,10 @@ public class MusicFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void playButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseClicked
-        tPlayer.run();
+        if(isPlaying == false) {
+            tPlayer.run();
+            isPlaying = true;
+        }
     }//GEN-LAST:event_playButtonMouseClicked
 
     /**
