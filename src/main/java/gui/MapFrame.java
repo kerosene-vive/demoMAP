@@ -21,13 +21,16 @@ public class MapFrame extends javax.swing.JFrame {
     }
     
     private void setMappa(){
+        ImageIcon appImg = new ImageIcon("images/mapsApp.png");
         ImageIcon mapImg = new ImageIcon("images/map.png");
-        setIconImage(mapImg.getImage());
-        setSize(499,500);
+        setIconImage(appImg.getImage());
+
         mapLabel.setText("");
         mapLabel.setIcon(mapImg);
         setName("Mappa");
+        setTitle("Mappa");
         
+        setSize(mapImg.getIconWidth(), mapImg.getIconHeight());
     }
 
     /**
@@ -40,8 +43,6 @@ public class MapFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         mapLabel = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mapLabel.setText("jLabel1");
 
