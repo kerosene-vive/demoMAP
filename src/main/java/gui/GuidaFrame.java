@@ -28,6 +28,7 @@ public class GuidaFrame extends javax.swing.JFrame {
         ImageIcon helpImage = new ImageIcon("images/help.png");
         helpImg.setIcon(helpImage);
         helpImg.setText("");
+        setTitle("guida");
             
         
     }

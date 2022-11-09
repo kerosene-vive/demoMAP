@@ -27,6 +27,7 @@ public class FotoFrame extends javax.swing.JFrame {
         System.out.println(roomName);
         ImageIcon roomImg = new ImageIcon("images/" + roomName);
         setIconImage(roomImg.getImage());
+        setTitle("fotocamera");
         
     }
 

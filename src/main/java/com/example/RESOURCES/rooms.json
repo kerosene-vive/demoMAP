@@ -121,14 +121,14 @@
     },
     {
         "id": 12,
-        "name": "-1",
+        "name": "meno1",
         "description": "Sei al piano -1,nella stanza c'è forte odore di caffe scadente",
         "aliases":"macchinette,piano-1,menouno",
         "isLocked":false,
-        "north": 0,
+        "north": 8,
         "south": 14,
         "east": 13,
-        "west": 8
+        "west": 0
     },
     {
         "id": 13,
@@ -143,7 +143,7 @@
     },
     {
         "id": 14,
-        "name": "-2",
+        "name": "meno2",
         "description": "ma cosa si nasconde qui?",
         "aliases":"piano-2,-2",
         "isLocked": true,

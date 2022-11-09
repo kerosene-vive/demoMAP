@@ -28,13 +28,14 @@ public class MusicFrame extends javax.swing.JFrame {
     }
 
     private void setMusic() {
-        setName("Lettore");
+        setTitle("Lettore");
         setSize(400,500);
         setResizable(false);
         ImageIcon musicImage = new ImageIcon("images/music.png");
         setIconImage(musicImage.getImage());
         musicImg.setIcon(musicImage);
         musicImg.setText("");
+      
     }
     /**
      * This method is called from within the constructor to initialize the form.
