@@ -20,18 +20,19 @@ public class GuidaFrame extends javax.swing.JFrame {
         setGuida();
     }
 
-    private void setGuida(){
-        setSize(430,350);
-        setResizable(false);
+    private void setGuida() {
+
         ImageIcon guidaImg = new ImageIcon("images/guida.png");
         setIconImage(guidaImg.getImage());
         ImageIcon helpImage = new ImageIcon("images/help.png");
         helpImg.setIcon(helpImage);
         helpImg.setText("");
         setTitle("guida");
-            
-        
+        setSize(helpImage.getIconWidth(), helpImage.getIconHeight());
+        setResizable(false);
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

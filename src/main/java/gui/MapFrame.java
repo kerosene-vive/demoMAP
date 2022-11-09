@@ -24,11 +24,13 @@ public class MapFrame extends javax.swing.JFrame {
         ImageIcon appImg = new ImageIcon("images/mapsApp.png");
         ImageIcon mapImg = new ImageIcon("images/map.png");
         setIconImage(appImg.getImage());
-        setSize(1620,630);
+
         mapLabel.setText("");
         mapLabel.setIcon(mapImg);
         setName("Mappa");
         setTitle("Mappa");
+        
+        setSize(mapImg.getIconWidth(), mapImg.getIconHeight());
     }
 
     /**

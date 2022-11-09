@@ -20,15 +20,20 @@ public class FotoFrame extends javax.swing.JFrame {
         initComponents();
         setFotocamera();
     }
-    
-    private void setFotocamera(){
-        setSize(500,700);
+
+    private void setFotocamera() {
+      
         String roomName = gameStatus.getCurrentRoom().getName();
         System.out.println(roomName);
-        ImageIcon roomImg = new ImageIcon("images/" + roomName);
-        setIconImage(roomImg.getImage());
+        ImageIcon fotoImg = new ImageIcon("images/fotocamera.png");
+        ImageIcon roomImg = new ImageIcon("images/" + roomName + ".png");
+        setIconImage(fotoImg.getImage());
         setTitle("fotocamera");
-        
+        setSize(roomImg.getIconWidth(), roomImg.getIconHeight());
+        setResizable(false);
+        roomLabel.setIcon(roomImg);
+        roomLabel.setText("");
+
     }
 
     /**

@@ -155,10 +155,6 @@ public class Telefono extends javax.swing.JFrame {
 
     }//GEN-LAST:event_guidaButtonMouseClicked
 
-    private void fotocameraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fotocameraButtonActionPerformed
-        
-    }//GEN-LAST:event_fotocameraButtonActionPerformed
-
     private void fotocameraButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fotocameraButtonMouseClicked
        FotoFrame fotoFrame = new FotoFrame();
        //fotoFrame.setVisibile(true);
@@ -176,6 +172,11 @@ public class Telefono extends javax.swing.JFrame {
         MusicFrame musicFrame = new MusicFrame();
         musicFrame.setVisible(true);
     }//GEN-LAST:event_musicButtonMouseClicked
+
+    private void fotocameraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fotocameraButtonActionPerformed
+        FotoFrame fotoFrame = new FotoFrame();
+        fotoFrame.setVisible(true);
+    }//GEN-LAST:event_fotocameraButtonActionPerformed
 
     /**
      * @param args the command line arguments
