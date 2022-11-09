@@ -127,7 +127,7 @@ I thread, sono inoltre utlizzati per elegare il servizo di invio dei files del s
     - Ufficio Lanubile (ufficio del Prof Lanubile)
     - Piano meno uno (piano interrato del Dipartimento)
     - Bagni (si spiegano da soli)
-    - Piano meno due (il mistero del gioco88)
+    - Piano meno due (il mistero del gioco)
 
 #
 
